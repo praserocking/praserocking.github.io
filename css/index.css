@@ -1,0 +1,88 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+	overflow-x:hidden;
+}
+
+td:hover{
+	cursor: pointer;
+}
+.space{
+	margin:15px;
+}
+.contact-icon{
+	float: right;
+	padding: 5px;
+}
+.contact-icon:hover{
+	cursor: pointer;
+}
+#google:hover{
+	color:#d34836;
+}
+#facebook:hover{
+	color:#3b5998;
+}
+#linkedin:hover{
+	color: #0e76a8;
+}
+#github:hover{
+	color: black;
+}
+#hey{
+	font-size: 600%;
+	position: absolute;
+}
+#name{
+	position: absolute;
+	top: 15%;
+	left: 5%;
+    transition: all 0.3s ease-in;
+    text-decoration:none;
+}
+.glow:hover{
+	-webkit-stroke-width: 5.3px;
+    -webkit-stroke-color: #FFFFFF;
+    -webkit-fill-color: #FFFFFF;
+    text-shadow: 1px 0px 20px white;
+}
+#header{
+	background-color: #3a3a3a;
+	left: 1px;
+	color: white;
+	font-size: 200%;
+	position: fixed;
+	z-index: 1000;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;	
+}
+#dp{
+	width: 150px;
+	height: 150px;
+	position: fixed;
+	border-radius: 75px;
+	-webkit-border-radius: 75px;
+	-moz-border-radius: 75px;
+	-webkit-filter: grayscale(1);
+  	filter: grayscale(1);
+	background: url("") no-repeat;
+	/*border: 2px ridge #3a3a3a;*/
+}
+#dp:hover{
+	-webkit-filter: grayscale(0);
+  	filter: grayscale(0);
+  	cursor:pointer;
+}
+td{
+	padding: 15px;
+}
+td:hover{
+	-webkit-stroke-width: 5.3px;
+    -webkit-stroke-color: #FFFFFF;
+    -webkit-fill-color: #FFFFFF;
+    text-shadow: 1px 0px 20px black;
+}
+.test{
+	width: 500px;
+	height: 500px;
+}
