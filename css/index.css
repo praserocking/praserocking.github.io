@@ -1,6 +1,10 @@
 body{
 	font-family: 'Open Sans', sans-serif;
 	overflow-x:hidden;
+	background-image: url("../imgs/bg.jpg"); 
+	background-repeat: no-repeat;
+    background-size: 100% 100%;
+	background-attachment:fixed;
 }
 td:hover{
 	cursor: pointer;
@@ -29,7 +33,8 @@ td:hover{
 }
 #hey{
 	font-size: 600%;
-	position: absolute;
+	position: fixed;
+	top: 68px;
 }
 #name{
 	position: absolute;
@@ -50,10 +55,12 @@ td:hover{
 	color: white;
 	font-size: 200%;
 	position: fixed;
+	top: 0px;
 	z-index: 1000;
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	   -moz-box-shadow: 0 8px 6px -6px black;
 	        box-shadow: 0 8px 6px -6px black;	
+	border-radius: 10px;
 }
 #dp{
 	width: 150px;
