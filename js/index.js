@@ -23,9 +23,9 @@ $(document).ready(function(){
 			scrollTop:$("#exps-content").offset().top-100
 		},"slow");
 	});
-	$('#cont').click(function() {
+	$('#about').click(function() {
 		$("html, body").animate({
-			scrollTop:$("#cont-content").offset().top-100
+			scrollTop:$("#about-content").offset().top-100
 		},"slow");
 	});
 });
