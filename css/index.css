@@ -10,6 +10,10 @@ a{
 	text-decoration: none;
 	color: inherit;
 }
+a:hover{
+	text-decoration: none;
+	color: inherit;
+}
 td:hover{
 	cursor: pointer;
 }
