@@ -6,16 +6,9 @@ body{
     background-size: 100% 100%;
 	background-attachment:fixed;
 }
-a{
+a,a:hover{
 	text-decoration: none;
 	color: inherit;
-}
-a:hover{
-	text-decoration: none;
-	color: inherit;
-}
-td:hover{
-	cursor: pointer;
 }
 .space{
 	margin:15px;
@@ -24,7 +17,7 @@ td:hover{
 	float: right;
 	padding: 5px;
 }
-.contact-icon:hover{
+.contact-icon:hover,td:hover{
 	cursor: pointer;
 }
 #google:hover{
