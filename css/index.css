@@ -10,6 +10,19 @@ a,a:hover{
 	text-decoration: none;
 	color: inherit;
 }
+td{
+	padding: 15px;
+}
+td:hover{
+	-webkit-stroke-width: 5.3px;
+    -webkit-stroke-color: #FFFFFF;
+    -webkit-fill-color: #FFFFFF;
+    text-shadow: 1px 0px 20px black;
+}
+.test{
+	width: auto;
+	height: 500px;
+}
 .space{
 	margin:15px;
 }
@@ -19,6 +32,12 @@ a,a:hover{
 }
 .contact-icon:hover,td:hover{
 	cursor: pointer;
+}
+.glow:hover{
+	-webkit-stroke-width: 5.3px;
+    -webkit-stroke-color: #FFFFFF;
+    -webkit-fill-color: #FFFFFF;
+    text-shadow: 1px 0px 20px white;
 }
 #google:hover{
 	color:#d34836;
@@ -43,12 +62,6 @@ a,a:hover{
 	left: 5%;
     transition: all 0.3s ease-in;
     text-decoration:none;
-}
-.glow:hover{
-	-webkit-stroke-width: 5.3px;
-    -webkit-stroke-color: #FFFFFF;
-    -webkit-fill-color: #FFFFFF;
-    text-shadow: 1px 0px 20px white;
 }
 #header{
 	background-color: #3a3a3a;
@@ -80,16 +93,4 @@ a,a:hover{
   	filter: grayscale(0);
   	cursor:pointer;
 }
-td{
-	padding: 15px;
-}
-td:hover{
-	-webkit-stroke-width: 5.3px;
-    -webkit-stroke-color: #FFFFFF;
-    -webkit-fill-color: #FFFFFF;
-    text-shadow: 1px 0px 20px black;
-}
-.test{
-	width: 500px;
-	height: 500px;
-}
+
