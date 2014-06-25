@@ -28,4 +28,7 @@ $(document).ready(function(){
 			scrollTop:$("#about-content").offset().top-100
 		},"slow");
 	});
+	$(".fa").hover(function(){
+		$(this).addClass("fa-spin").delay(1000).removeClass("fa-spin");
+	});
 });

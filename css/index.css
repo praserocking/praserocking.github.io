@@ -22,6 +22,7 @@ td:hover{
 .test{
 	width: auto;
 	height: 500px;
+	text-shadow: 1px 1px 1px #FFFFFF;
 }
 .space{
 	margin:15px;
