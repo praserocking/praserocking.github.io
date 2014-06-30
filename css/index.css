@@ -64,6 +64,9 @@ td:hover{
 #github:hover{
 	color: black;
 }
+#blogger:hover{
+	color:#ff6600;
+}
 #hey{
 	font-size: 600%;
 	position: fixed;
