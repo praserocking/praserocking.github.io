@@ -21,7 +21,7 @@ td:hover{
 }
 .test{
 	width: auto;
-	height: 500px;
+	height: auto;
 	text-shadow: 1px 1px 1px #FFFFFF;
 	background-color: rgba(255,255,255,0.25);
 	padding: 20px;
@@ -45,6 +45,12 @@ td:hover{
     -webkit-stroke-color: #FFFFFF;
     -webkit-fill-color: #FFFFFF;
     text-shadow: 1px 0px 20px white;
+}
+.url{
+	color:green;
+}
+.url:hover{
+	color:blue;
 }
 #google:hover{
 	color:#d34836;
