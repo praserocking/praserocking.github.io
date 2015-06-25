@@ -120,8 +120,8 @@ td:hover,.greyglow:hover{
 
 #tictactoe{
 	position: fixed;
-	bottom:20%;
-	font-size:25px;
+	bottom:10%;
+	font-size:15px;
 	font-weight: bold;
 	text-align: center;
 	width: 22%;
