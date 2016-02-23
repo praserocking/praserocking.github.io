@@ -1,0 +1,144 @@
+<html>
+<head>
+	<title>
+		Conway's Game Of Life
+	</title>
+	<style type="text/css">
+	*{margin:0;padding:0;}
+	html,body{
+		height:100%;
+	}
+	#page{
+		cursor: crosshair;
+		position: fixed;
+	}
+	#game{
+		position: fixed;
+		right: 50%;
+		z-index:1000;
+		padding: 5px;
+	}
+	</style>
+</head>
+<body>
+	<button id="game">Start The Game</button>
+	<canvas id="page">
+		
+	</canvas>
+	<script type="text/javascript">
+	(function(){
+		var canvas = document.getElementById("page");
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		var ctx = canvas.getContext("2d");
+		
+		var x = 0, y = 0;
+		var base_array, temp_array;
+		var interval_looper;
+
+		var start_the_game = function(){
+			interval_looper = setInterval(repaint_canvas_with_conway_rules, 1000);
+		};
+		
+		var draw_boxes = function(){
+			ctx.fillStyle = "#000";
+			ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+			ctx.fillStyle = "#fff";
+			for(var i = 0; i < window.innerWidth; i+=15){
+				for(var j = 0; j < window.innerHeight; j+=15){
+					ctx.fillRect(i,j,15,15);
+					j++;y++;
+				}
+				i++;x++;
+			}
+		};
+
+		var initialize_array = function(x,y){
+			base_array = new Array(x);
+			temp_array = new Array(x);
+			for(var i = 0; i < x; i++){
+				base_array[i] = new Array(y);
+				base_array[i].fill(0);
+				temp_array[i] = new Array(y);
+				temp_array[i].fill(0);
+			}
+		}
+		
+		var get_mapped_coordinate = function(i,j){
+			return [i*16, j*16];
+		};
+
+		var paint_cell = function(i,j,color){
+			var actual_coords = get_mapped_coordinate(i,j);
+			ctx.fillStyle = color == 0 ? "#fff" : "#000";
+			ctx.fillRect(actual_coords[0],actual_coords[1],15,15);
+		};
+
+		var click_handler = function(event){
+			var to_be_colored = [event.pageX - event.pageX%16, event.pageY - event.pageY%16];
+			var ctx = canvas.getContext("2d");
+			var array_coords = [to_be_colored[0]/16, to_be_colored[1]/16];
+			base_array[array_coords[0]][array_coords[1]] = 1;
+			paint_cell(array_coords[0], array_coords[1], base_array[array_coords[0]][array_coords[1]]);
+		}
+
+		var is_alive = function(i,j){
+			if(i < 0 || i >= x)
+				return false;
+			else if(j < 0 || j >= y)
+				return false;
+			else
+				return base_array[i][j] == 1 ? true : false;
+		};
+
+		var determine_state = function(i,j){
+			var alive_neighbours = [
+				is_alive(i-1,j-1),
+				is_alive(i-1,j),
+				is_alive(i,j-1),
+				is_alive(i+1,j+1),
+				is_alive(i,j+1),
+				is_alive(i+1,j),
+				is_alive(i-1,j+1),
+				is_alive(i+1,j-1)
+			].filter(function(x){return x == true}).length;
+			if(alive_neighbours < 2 || alive_neighbours > 3)
+				temp_array[i][j] = 0;
+			else if(alive_neighbours == 3)
+				temp_array[i][j] = 1;
+			else
+				temp_array[i][j] = base_array[i][j];
+			paint_cell(i,j,temp_array[i][j]);
+		};
+
+		var copy_temp_to_base = function(){
+			for(var i = 0; i < base_array.length; i++){
+				for(var j = 0; j < base_array[i].length; j++){
+					base_array[i][j] = temp_array[i][j];
+				}
+			}
+		};
+
+		var repaint_canvas_with_conway_rules = function(){
+			for(var i = 0; i < base_array.length; i++){
+				for(var j = 0; j < base_array[i].length; j++){
+					determine_state(i,j);
+				}
+			}
+			copy_temp_to_base();
+		};
+
+		if(canvas.getContext){
+			draw_boxes();
+			initialize_array(x,y/x);
+			y /= x;
+			canvas.addEventListener('click',click_handler,false);
+			document.getElementById("game").addEventListener('click',start_the_game,false);
+		}
+		else{
+			alert("canvas not supported! which world are you in?");
+		}
+	})();
+	</script>
+</body>
+</html>
