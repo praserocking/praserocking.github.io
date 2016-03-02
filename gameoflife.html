@@ -101,7 +101,7 @@
 				is_alive(i+1,j),
 				is_alive(i-1,j+1),
 				is_alive(i+1,j-1)
-			].filter(function(x){return x == true}).length;
+			].filter(function(x){return x}).length;
 			if(alive_neighbours < 2 || alive_neighbours > 3)
 				temp_array[i][j] = 0;
 			else if(alive_neighbours == 3)
