@@ -343,12 +343,12 @@
 <script>
 (function(){
   var addHaritha = function(text){
-    var div = $("<div></div>").addClass("haritha").html(text);
+    var div = $("<div></div>").addClass("haritha").html("<b>" + haritha + ": </b>" + text);
     $("body").append(div);
   }
 
   var addSoma = function(text){
-    var div = $("<div></div>").addClass("soma").html(text);
+    var div = $("<div></div>").addClass("soma").html("<b>" + soma + ": </b>" + text);
     $("body").append(div);
   }
   var exchanges = content.split("                    ");
@@ -356,7 +356,6 @@
   var soma = "Soma Sundaram";
   for(var i = 0; i < exchanges.length; i++){
     var pieces = exchanges[i].split(":");
-    console.log(pieces);
     (pieces[0].trim() == haritha) ? addHaritha(pieces[1]) : addSoma(pieces[1]);
   }
 })();
