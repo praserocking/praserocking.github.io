@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Bunny Jokes</title>
-<link href="http://fonts.googleapis.com/css?family=Cardo:400,400italic|Radley|Tangerine" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cardo:400,400italic|Radley|Tangerine" rel="stylesheet">
 <style>
   button{
     position:absolute;
@@ -80,7 +80,7 @@
   <script>
   (function(){
     $("#joke_btn").click(function(){
-      $.ajax({url:'http://api.icndb.com/jokes/random?firstName=Haritha&lastName='})
+      $.ajax({url:'https://api.icndb.com/jokes/random?firstName=Haritha&lastName='})
         .success(function(data){
           var joke_data = data.value.joke.split(" ");
           var i = 0;
