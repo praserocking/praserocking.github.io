@@ -1,198 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shenbaga Prasanna's Resume</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            margin-top: 30px;
-        }
-
-        .header {
-            text-align: center;
-            padding: 50px 0;
-            background: linear-gradient(to right, #007bff, #6610f2);
-            color: white;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 3em;
-            font-weight: bold;
-        }
-
-        .header p {
-            margin: 10px 0;
-            font-size: 1.2em;
-        }
-
-        .section {
-            margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
-        }
-
-        .card {
-            margin-bottom: 20px;
-        }
-
-        .card-header {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .card-body {
-            background-color: #e9ecef;
-        }
-
-        .skills ul {
-            columns: 2;
-            list-style: none;
-            padding: 0;
-        }
-
-        .skills li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .skills li:before {
-            content: "✔";
-            position: absolute;
-            left: 0;
-            color: #007bff;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #007bff;
-            color: white;
-        }
-    </style>
+    <title>Shenbaga Prasanna - Resume and Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class="container">
-        <div class="header">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <div class="hero">
             <h1>Shenbaga Prasanna</h1>
             <p>Senior Software Engineer @ Amazon</p>
             <p>Bengaluru, Karnataka, India</p>
-            <p>Contact: <a href="tel:+919962266692" style="color: white;">9962266692</a> | <a href="mailto:shenbagaprasanna@gmail.com" style="color: white;">shenbagaprasanna@gmail.com</a></p>
-            <p><a href="https://www.linkedin.com/in/shenbagaprasanna" style="color: white;">LinkedIn</a></p>
+            <a href="#contact" class="cta">Contact Me</a>
         </div>
-
-        <div class="section">
-            <h2>Summary</h2>
-            <p>
-                As a Senior Software Engineer at Amazon, I lead the design and development of cutting-edge solutions for Amazon Devices, AWS Elasticsearch, and the Alexa International team. My expertise spans cloud and data services, along with server-side programming, driving impactful innovations that align with business goals.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>Experience</h2>
-            <div class="card">
-                <div class="card-header">Amazon</div>
-                <div class="card-body">
-                    <p><strong>Software Development Engineer 3</strong> (September 2022 - Present)</p>
-                    <ul>
-                        <li>Led the development of LLM infrastructure, improving deployment and management efficiency by 30%.</li>
-                        <li>Benchmarked e2e system latency, resulting in a 15% reduction in response times.</li>
-                        <li>Implemented localization and code generation/autofix experiments, enhancing international user experience.</li>
-                    </ul>
-                    <p><strong>Software Development Engineer 2</strong> (May 2018 - August 2022)</p>
-                    <ul>
-                        <li>Enhanced Alexa APL screens with Pseudolocalization support, increasing L10n testing efficiency by 25%.</li>
-                        <li>Developed scalable Data & Catalog Ingestion solutions for Alexa NLU, supporting millions of users.</li>
-                    </ul>
-                    <p><strong>Software Development Engineer</strong> (July 2016 - May 2018)</p>
-                    <ul>
-                        <li>Designed and developed cloud backend services for Fire TV Recast, contributing to a 20% increase in user retention.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">NortonLifeLock</div>
-                <div class="card-body">
-                    <ul>
-                        <li>Developed configurable themes for a partner-branded web application, increasing user engagement by 15%.</li>
-                        <li>Built management APIs, enabling third parties to manage subscriptions, resulting in a 10% increase in API usage.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">Freshworks</div>
-                <div class="card-body">
-                    <ul>
-                        <li>Built a product to collect customer feedback, improving feedback collection efficiency by 40%.</li>
-                        <li>Automated the export of feedback to websites, reducing manual efforts by 50%.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Education</h2>
-            <div class="card">
-                <div class="card-header">Birla Institute of Technology and Science, Pilani</div>
-                <div class="card-body">
-                    <p>Master of Technology, Software Systems with Specialization on Networks and Cloud (2020 - 2022)</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">Shanmugha Arts, Science, Technology and Research Academy</div>
-                <div class="card-body">
-                    <p>Bachelor of Technology, Information Technology (2011 - 2015)</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section skills">
-            <h2>Skills</h2>
-            <div class="card">
-                <div class="card-body">
-                    <ul>
-                        <li>Technical Leadership - Led multiple teams to successful project completions, improving overall productivity by 20%.</li>
-                        <li>Interviewing - Conducted over 100 technical interviews, significantly improving the hiring process efficiency.</li>
-                        <li>Software Architecture - Designed scalable and reliable architectures for various projects, resulting in a 30% increase in system reliability.</li>
-                        <li>Cloud Computing - Extensive experience with AWS, Azure, and Google Cloud Platform.</li>
-                        <li>Server-Side Programming - Proficient in Java, Python, and Node.js.</li>
-                        <li>Data Services - Expertise in database design, SQL, NoSQL, and data warehousing solutions.</li>
-                        <li>English (Professional Working)</li>
-                        <li>Tamil (Native or Bilingual)</li>
-                        <li>Hindi (Limited Working)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>© 2024 Shenbaga Prasanna</p>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </section>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <p>As a Senior Software Engineer at Amazon, I lead the design and development of cutting-edge solutions for Amazon Devices, AWS Elasticsearch, and the Alexa International team. My expertise spans cloud and data services, along with server-side programming, driving impactful innovations that align with business goals.</p>
+        <p>With a Master's degree in Software Systems (Networks and Cloud) from Birla Institute of Technology and Science, Pilani, and a Bachelor's degree in Information Technology from Shanmugha Arts, Science, Technology and Research Academy, I have a robust educational background. I have led cross-functional teams to success, mentored junior engineers, and ensured seamless project execution from conception to deployment. My achievements include winning multiple hackathons and securing a patent for remote scheduling of recorded content for digital video recorders.</p>
+        <p>I am passionate about driving technological advancements and delivering exceptional results. My ability to quickly learn new skills, collaborate with diverse teams, and push the boundaries of innovation makes me a valuable asset. As a proven leader, I excel in creating strategies, guiding teams, and achieving project milestones on time and within budget.</p>
+    </section>
+    
+    <section id="experience">
+        <h2>Experience</h2>
+        <ul>
+            <li>
+                <h3>Software Development Engineer 3, Amazon</h3>
+                <p>September 2022 - Present</p>
+                <ul>
+                    <li>2024 - Worked on LLM infrastructure, deployment & management, e2e system benchmarking & latency, localization, and code generation/autofix experiments using LLM.</li>
+                    <li>2023 - Implemented Pseudolocalization support on Alexa APL screens, enhancing L10n testing capabilities.</li>
+                    <li>2022 - Developed scalable and configurable Data & Catalog Ingestion solutions for Alexa NLU and Domain systems.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Software Development Engineer 2, Amazon</h3>
+                <p>May 2018 - August 2022</p>
+                <ul>
+                    <li>2021 - Developed services to support the launch of Curriculum Education Experiences on Alexa.</li>
+                    <li>2020 - Created backend services for the launch of the Custom Dictionaries feature on AWS Elasticsearch.</li>
+                    <li>2019 - Built AWS Maps services for AWS Elasticsearch's Kibana using OpenStreetMap (OSM).</li>
+                    <li>2018 - Developed backend services to support the partnership of Fire TV Stick - TataSky Edition.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Software Development Engineer, Amazon</h3>
+                <p>July 2016 - May 2018</p>
+                <ul>
+                    <li>2016 & 2017 - Designed and developed a suite of cloud backend services for Fire TV Recast.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Software Development Engineer, NortonLifeLock</h3>
+                <p>June 2015 - July 2016</p>
+                <ul>
+                    <li>2015 - Developed configurable themes for a partner-branded web application for managing Norton products. Built management APIs to allow authorized third parties to manage subscriptions.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Software Development Intern, Freshworks</h3>
+                <p>December 2014 - May 2015</p>
+                <ul>
+                    <li>2014 - Built a product to collect customer feedbacks and automatically export them to display on websites.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    <section id="education">
+        <h2>Education</h2>
+        <ul>
+            <li>
+                <h3>Master of Technology, Software Systems with Specialization on Networks and Cloud</h3>
+                <p>Birla Institute of Technology and Science, Pilani (2020 - 2022)</p>
+            </li>
+            <li>
+                <h3>Bachelor of Technology, Information Technology</h3>
+                <p>Shanmugha Arts, Science, Technology and Research Academy (2011 - 2015)</p>
+            </li>
+            <li>
+                <h3>AISSC, High School Equivalence Certificate Program</h3>
+                <p>Kamala Niketan Montessori School (2009 - 2011)</p>
+            </li>
+            <li>
+                <h3>SSLC, Secondary Education</h3>
+                <p>St.Vincent Matric. School (2004 - 2009)</p>
+            </li>
+        </ul>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li>
+                <h3>LLM Infrastructure, Deployment & Management</h3>
+                <p>Worked on infrastructure and deployment of large language models, e2e system benchmarking, latency management, localization, and code generation/autofix experiments.</p>
+            </li>
+            <li>
+                <h3>Pseudolocalization Support on Alexa APL Screens</h3>
+                <p>Implemented support for pseudolocalization to enhance L10n testing capabilities.</p>
+            </li>
+            <li>
+                <h3>Data & Catalog Ingestion Solutions for Alexa NLU and Domain Systems</h3>
+                <p>Developed scalable and configurable solutions for data and catalog ingestion.</p>
+            </li>
+        </ul>
+    </section>
+    
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Technical Leadership</li>
+            <li>Interviewing</li>
+            <li>Software Architecture</li>
+            <li>English (Professional Working)</li>
+            <li>Tamil (Native or Bilingual)</li>
+            <li>Hindi (Limited Working)</li>
+        </ul>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>If you would like to get in touch, please fill out the form below or reach me via email at <a href="mailto:shenbagaprasanna@gmail.com">shenbagaprasanna@gmail.com</a>.</p>
+        <form action="https://formspree.io/f/mlekgylb" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Shenbaga Prasanna. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
 </body>
-
 </html>
