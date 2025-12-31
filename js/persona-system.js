@@ -118,12 +118,56 @@ class PersonaSystem {
                     text: 'Engineering leader passionate about scalable solutions'
                 },
                 
+                // Update about cards back to professional theme
+                '.about-card:nth-child(1) h3': {
+                    text: 'Technical Excellence'
+                },
+                '.about-card:nth-child(1) p': {
+                    text: 'Architect large-scale distributed systems, LLM integration, and cloud-native solutions. Build robust, scalable infrastructure serving millions with high performance and reliability.'
+                },
+                
+                '.about-card:nth-child(2) h3': {
+                    text: 'Leadership Impact'
+                },
+                '.about-card:nth-child(2) p': {
+                    text: 'Lead cross-functional teams, mentor developers, and drive technical initiatives from concept to production. Manage teams up to 4 engineers delivering complex projects on time.'
+                },
+                
+                '.about-card:nth-child(3) h3': {
+                    text: 'Innovation Focus'
+                },
+                '.about-card:nth-child(3) p': {
+                    text: 'Solve complex engineering challenges through innovation. Patent holder in cloud services and DVR technology, creating solutions with measurable business impact.'
+                },
+                
                 // Experience section
                 '.experience-section .section-title': {
                     text: 'Professional Experience'
                 },
                 '.experience-section .section-subtitle': {
                     text: 'My career journey'
+                },
+                
+                // Update job titles back to professional theme
+                '.timeline-item:nth-child(1) h3': {
+                    text: 'Senior Software Engineer'
+                },
+                '.timeline-item:nth-child(1) .company': {
+                    text: 'Amazon'
+                },
+                
+                '.timeline-item:nth-child(2) h3': {
+                    text: 'Software Development Engineer I & II'
+                },
+                '.timeline-item:nth-child(2) .company': {
+                    text: 'Amazon'
+                },
+                
+                '.timeline-item:nth-child(3) h3': {
+                    text: 'Associate Software Engineer'
+                },
+                '.timeline-item:nth-child(3) .company': {
+                    text: 'Symantec Corporation'
                 },
                 
                 // Projects section
@@ -134,12 +178,52 @@ class PersonaSystem {
                     text: 'Innovative solutions I\'ve built'
                 },
                 
+                // Update project titles back to professional theme
+                '.project-card:nth-child(1) h3': {
+                    text: 'LLM-Integrated Automotive Voice Control'
+                },
+                '.project-card:nth-child(1) p': {
+                    text: 'Led cross-org collaboration (Alexa Connected Devices + Smart Vehicles) for Alexa+ feature. Secured Principal Engineer approval, engineered low-latency solution with device-context biasing, RAG optimization, and infrastructure reuse.'
+                },
+                
+                '.project-card:nth-child(2) h3': {
+                    text: 'Global Localization Platform Enhancement'
+                },
+                '.project-card:nth-child(2) p': {
+                    text: 'Identified Alexa localization testing gap causing inefficiencies. Implemented runtime pseudolocalization in APL, enabling global scalability. Delivered in APL 2024.1 with 75% L10n defect reduction.'
+                },
+                
+                '.project-card:nth-child(3) h3': {
+                    text: 'Geospatial Visualization Service'
+                },
+                '.project-card:nth-child(3) p': {
+                    text: 'Built custom Maps service with OpenStreetMap for AWS OpenSearch visualizations. Implemented distributed task runner for real-time dictionary updates across production clusters.'
+                },
+                
+                '.project-card:nth-child(4) h3': {
+                    text: 'Fire TV Cloud DVR System'
+                },
+                '.project-card:nth-child(4) p': {
+                    text: 'Engineered cloud DVR services for Fire TV Recast (patented). Delivered backend architecture enabling seamless multi-platform DVR with 99.9% uptime.'
+                },
+                
                 // Skills section
                 '.skills-section .section-title': {
                     text: 'Skills & Expertise'
                 },
                 '.skills-section .section-subtitle': {
                     text: 'Technologies and competencies'
+                },
+                
+                // Update skill categories back to professional theme
+                '.skills-category:nth-child(1) h3': {
+                    text: 'Core Competencies'
+                },
+                '.skills-category:nth-child(2) h3': {
+                    text: 'Cloud & Infrastructure'
+                },
+                '.skills-category:nth-child(3) h3': {
+                    text: 'Programming & Tools'
                 },
                 
                 // Education section
@@ -150,6 +234,27 @@ class PersonaSystem {
                     text: 'Academic background and qualifications'
                 },
                 
+                // Update education back to professional theme
+                '.education-item:nth-child(1) h3': {
+                    text: 'Master of Technology - Software Systems'
+                },
+                '.education-item:nth-child(1) .institution': {
+                    text: 'BITS Pilani'
+                },
+                '.education-item:nth-child(1) p': {
+                    text: 'Networks and Cloud Computing focus: distributed systems, cloud architecture, scalable software solutions.'
+                },
+                
+                '.education-item:nth-child(2) h3': {
+                    text: 'Bachelor of Technology - Information Technology'
+                },
+                '.education-item:nth-child(2) .institution': {
+                    text: 'SASTRA University'
+                },
+                '.education-item:nth-child(2) p': {
+                    text: 'Foundation in computer science, software engineering principles, and IT systems.'
+                },
+                
                 // Patents section
                 '.patents-section .section-title': {
                     text: 'Patents'
@@ -158,12 +263,37 @@ class PersonaSystem {
                     text: 'Intellectual property and innovations'
                 },
                 
+                // Update patent back to professional theme
+                '.patent-card h3': {
+                    text: 'Remote Scheduling of Recorded Content for Digital Video Recorders'
+                },
+                '.patent-card p': {
+                    text: 'Patented cloud DVR scheduling system for Fire TV Recast remote recording management. Delivers seamless cross-platform experience with optimized resource utilization and reliability.'
+                },
+                
                 // Contact section
                 '.contact-section .section-title': {
                     text: 'Let\'s Connect'
                 },
                 '.contact-section .section-subtitle': {
                     text: 'Open to discussing new opportunities and collaborations'
+                },
+                
+                // Update contact cards back to professional theme
+                '.contact-card:nth-child(1) h3': {
+                    text: 'Email'
+                },
+                '.contact-card:nth-child(2) h3': {
+                    text: 'Phone'
+                },
+                '.contact-card:nth-child(3) h3': {
+                    text: 'Location'
+                },
+                '.contact-card:nth-child(4) h3': {
+                    text: 'Current Role'
+                },
+                '.contact-card:nth-child(4) p': {
+                    text: 'Senior SDE at Amazon'
                 },
                 
                 // Footer
