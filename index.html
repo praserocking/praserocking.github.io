@@ -3,158 +3,555 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shenbaga Prasanna - Resume and Portfolio</title>
+    <title>Shenbaga Prasanna - Senior Software Engineer</title>
+    <meta name="description" content="Senior Software Engineer at Amazon specializing in cloud services, LLM infrastructure, and scalable backend solutions.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p>Loading Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <span class="logo-text">SP</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+                    <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#patents" class="nav-link">Patents</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
         </nav>
     </header>
-    
-    <section id="home">
-        <div class="hero">
-            <h1>Shenbaga Prasanna</h1>
-            <p>Senior Software Engineer @ Amazon</p>
-            <p>Bengaluru, Karnataka, India</p>
-            <a href="#contact" class="cta">Contact Me</a>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="greeting">Hello, I'm</span>
+                    <span class="name">Shenbaga Prasanna</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span class="typing-text"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    Senior Software Engineer at Amazon with 10+ years of experience building scalable cloud infrastructure, 
+                    LLM-integrated systems, and backend solutions serving millions of users globally.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-code"></i>
+                        View Projects
+                    </a>
+                </div>
+                <div class="hero-social">
+                    <a href="mailto:shenbagaprasanna@gmail.com" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+919962266692" class="social-link" aria-label="Phone">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/shenbagaprasanna" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/praserocking" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </section>
-    
-    <section id="about">
-        <h2>About Me</h2>
-        <p>As a Senior Software Engineer at Amazon, I lead the design and development of cutting-edge solutions for Amazon Devices, AWS Elasticsearch, and the Alexa International team. My expertise spans cloud and data services, along with server-side programming, driving impactful innovations that align with business goals.</p>
-        <p>With a Master's degree in Software Systems (Networks and Cloud) from Birla Institute of Technology and Science, Pilani, and a Bachelor's degree in Information Technology from Shanmugha Arts, Science, Technology and Research Academy, I have a robust educational background. I have led cross-functional teams to success, mentored junior engineers, and ensured seamless project execution from conception to deployment. My achievements include winning multiple hackathons and securing a patent for remote scheduling of recorded content for digital video recorders.</p>
-        <p>I am passionate about driving technological advancements and delivering exceptional results. My ability to quickly learn new skills, collaborate with diverse teams, and push the boundaries of innovation makes me a valuable asset. As a proven leader, I excel in creating strategies, guiding teams, and achieving project milestones on time and within budget.</p>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-subtitle">Engineering leader passionate about scalable solutions</div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h3>Technical Excellence</h3>
+                        <p>Specialized in architecting large-scale distributed systems, LLM integration, and cloud-native solutions. I focus on building robust, scalable infrastructure that serves millions of users while maintaining high performance and reliability standards.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Leadership Impact</h3>
+                        <p>Proven track record of leading cross-functional engineering teams, mentoring developers, and driving technical initiatives from conception to production. Successfully managed teams of up to 4 engineers while delivering complex projects on time.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Innovation Focus</h3>
+                        <p>Passionate about solving complex engineering challenges through innovative approaches. Holder of patents in cloud services and DVR technology, with a focus on creating solutions that drive measurable business impact and technical advancement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section id="experience">
-        <h2>Experience</h2>
-        <ul>
-            <li>
-                <h3>Software Development Engineer 3, Amazon</h3>
-                <p>September 2022 - Present</p>
-                <ul>
-                    <li>2024 - Worked on LLM infrastructure, deployment & management, e2e system benchmarking & latency, localization, and code generation/autofix experiments using LLM.</li>
-                    <li>2023 - Implemented Pseudolocalization support on Alexa APL screens, enhancing L10n testing capabilities.</li>
-                    <li>2022 - Developed scalable and configurable Data & Catalog Ingestion solutions for Alexa NLU and Domain systems.</li>
-                </ul>
-            </li>
-            <li>
-                <h3>Software Development Engineer 2, Amazon</h3>
-                <p>May 2018 - August 2022</p>
-                <ul>
-                    <li>2021 - Developed services to support the launch of Curriculum Education Experiences on Alexa.</li>
-                    <li>2020 - Created backend services for the launch of the Custom Dictionaries feature on AWS Elasticsearch.</li>
-                    <li>2019 - Built AWS Maps services for AWS Elasticsearch's Kibana using OpenStreetMap (OSM).</li>
-                    <li>2018 - Developed backend services to support the partnership of Fire TV Stick - TataSky Edition.</li>
-                </ul>
-            </li>
-            <li>
-                <h3>Software Development Engineer, Amazon</h3>
-                <p>July 2016 - May 2018</p>
-                <ul>
-                    <li>2016 & 2017 - Designed and developed a suite of cloud backend services for Fire TV Recast.</li>
-                </ul>
-            </li>
-            <li>
-                <h3>Software Development Engineer, NortonLifeLock</h3>
-                <p>June 2015 - July 2016</p>
-                <ul>
-                    <li>2015 - Developed configurable themes for a partner-branded web application for managing Norton products. Built management APIs to allow authorized third parties to manage subscriptions.</li>
-                </ul>
-            </li>
-            <li>
-                <h3>Software Development Intern, Freshworks</h3>
-                <p>December 2014 - May 2015</p>
-                <ul>
-                    <li>2014 - Built a product to collect customer feedbacks and automatically export them to display on websites.</li>
-                </ul>
-            </li>
-        </ul>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Education</h2>
+                <div class="section-subtitle">Academic background and qualifications</div>
+            </div>
+            <div class="education-content">
+                <div class="education-item" data-aos="fade-up">
+                    <div class="education-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="education-details">
+                        <h3>Master of Technology - Software Systems</h3>
+                        <div class="institution">BITS Pilani</div>
+                        <div class="location">Pilani, IN</div>
+                        <div class="duration">2020 - 2022</div>
+                        <p>Specialized in Networks and Cloud Computing with focus on distributed systems, cloud architecture, and scalable software solutions.</p>
+                    </div>
+                </div>
+                <div class="education-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="education-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="education-details">
+                        <h3>Bachelor of Technology - Information Technology</h3>
+                        <div class="institution">SASTRA University</div>
+                        <div class="location">Tanjore, IN</div>
+                        <div class="duration">2011 - 2015</div>
+                        <p>Comprehensive foundation in computer science, software engineering principles, and information technology systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li>
-                <h3>Master of Technology, Software Systems with Specialization on Networks and Cloud</h3>
-                <p>Birla Institute of Technology and Science, Pilani (2020 - 2022)</p>
-            </li>
-            <li>
-                <h3>Bachelor of Technology, Information Technology</h3>
-                <p>Shanmugha Arts, Science, Technology and Research Academy (2011 - 2015)</p>
-            </li>
-            <li>
-                <h3>AISSC, High School Equivalence Certificate Program</h3>
-                <p>Kamala Niketan Montessori School (2009 - 2011)</p>
-            </li>
-            <li>
-                <h3>SSLC, Secondary Education</h3>
-                <p>St.Vincent Matric. School (2004 - 2009)</p>
-            </li>
-        </ul>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Experience</h2>
+                <div class="section-subtitle">My career journey</div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">
+                            <i class="fab fa-amazon"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Senior Software Engineer</h3>
+                            <div class="company">Amazon</div>
+                            <div class="duration">2022 - Present</div>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Architected and led development of LLM-integrated voice control system for automotive devices, coordinating across 3 cross-functional teams. Achieved consensus with 2 Principal Engineers on latency-optimized architecture utilizing advanced caching, RAG-based retrieval, and infrastructure reuse. Currently managing 4 engineers with full technical and delivery ownership.</li>
+                            <li>Designed and implemented pseudolocalization support in Alexa Presentation Language (APL) core runtime, eliminating platform-specific plugin dependencies. Led technical design reviews with Senior Principal Engineers and delivered feature as public SDK enhancement, enabling global localization scalability for the entire Alexa developer ecosystem.</li>
+                            <li>Architected Curriculum experiences platform for Alexa, integrating third-party publishers through modular, high-performance ingestion pipeline achieving sub-5-second update latency. Led 2-engineer team in scalable backend development while providing technical mentorship resulting in successful SDE-II promotions.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">
+                            <i class="fab fa-amazon"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Development Engineer I & II</h3>
+                            <div class="company">Amazon</div>
+                            <div class="duration">July 2016 - 2022</div>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Developed custom Maps service leveraging OpenStreetMap for geospatial visualizations in AWS OpenSearch (Kibana). Implemented distributed task runner enabling real-time custom dictionary updates across live production clusters, enhancing search capabilities for enterprise customers.</li>
+                            <li>Engineered Fire TV partner customizations and distributed cloud services for DVR schedule generation on Fire TV Recast, resulting in patented innovation. Delivered comprehensive cloud backend architecture enabling seamless DVR functionality across multiple device platforms.</li>
+                            <li>Built robust backend services supporting Fire TV Stick partnerships and international market expansion initiatives. Delivered scalable infrastructure architecture handling millions of concurrent users across global regions with 99.9% uptime.</li>
+                            <li>Architected high-throughput data ingestion pipelines and real-time processing systems for Alexa services. Delivered high-availability solutions achieving sub-second response times for mission-critical user-facing features at global scale.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Associate Software Engineer</h3>
+                            <div class="company">Symantec Corporation</div>
+                            <div class="duration">June 2015 - July 2016</div>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Developed and exposed secure management APIs for Norton Mobile Security, enabling third-party integration for enterprise device subscription management.</li>
+                            <li>Enhanced Norton subscription management portal with feature deliveries including seasonal promotional integrations and customizable partner theming solutions.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li>
-                <h3>LLM Infrastructure, Deployment & Management</h3>
-                <p>Worked on infrastructure and deployment of large language models, e2e system benchmarking, latency management, localization, and code generation/autofix experiments.</p>
-            </li>
-            <li>
-                <h3>Pseudolocalization Support on Alexa APL Screens</h3>
-                <p>Implemented support for pseudolocalization to enhance L10n testing capabilities.</p>
-            </li>
-            <li>
-                <h3>Data & Catalog Ingestion Solutions for Alexa NLU and Domain Systems</h3>
-                <p>Developed scalable and configurable solutions for data and catalog ingestion.</p>
-            </li>
-        </ul>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-subtitle">Innovative solutions I've built</div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>LLM-Integrated Automotive Voice Control</h3>
+                        <div class="project-meta">
+                            <span class="project-role">Technical Lead, Amazon</span>
+                            <span class="project-date">December 2024</span>
+                        </div>
+                        <p>Led cross-organizational collaboration between Alexa Connected Devices and Amazon Smart Vehicles to architect innovative Alexa+ feature. Successfully navigated multi-stakeholder approval process, securing endorsement from two Principal Engineers. Engineered low-latency solution utilizing device-context biasing, RAG-based inference optimization, and strategic infrastructure reuse.</p>
+                        <div class="project-tags">
+                            <span class="tag">LLM Integration</span>
+                            <span class="tag">Voice Control</span>
+                            <span class="tag">Automotive</span>
+                            <span class="tag">RAG</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Global Localization Platform Enhancement</h3>
+                        <div class="project-meta">
+                            <span class="project-role">Senior Software Engineer, Amazon</span>
+                            <span class="project-date">Aug 2023 - Dec 2023</span>
+                        </div>
+                        <p>Identified critical gap in Alexa platform localization testing workflow causing development inefficiencies. Designed and implemented runtime-level pseudolocalization solution in Alexa Presentation Language (APL), enabling global developer scalability. Delivered with APL version 2024.1, achieving 75% reduction in L10n defects and significant testing efficiency improvements.</p>
+                        <div class="project-tags">
+                            <span class="tag">Alexa APL</span>
+                            <span class="tag">Localization</span>
+                            <span class="tag">Runtime</span>
+                            <span class="tag">SDK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Geospatial Visualization Service</h3>
+                        <div class="project-meta">
+                            <span class="project-role">Software Engineer, Amazon</span>
+                            <span class="project-date">2019 - 2021</span>
+                        </div>
+                        <p>Developed custom Maps service leveraging OpenStreetMap for geospatial visualizations in AWS OpenSearch (Kibana). Implemented distributed task runner enabling real-time custom dictionary updates across live production clusters, enhancing search capabilities for enterprise customers.</p>
+                        <div class="project-tags">
+                            <span class="tag">AWS OpenSearch</span>
+                            <span class="tag">Geospatial</span>
+                            <span class="tag">Distributed Systems</span>
+                            <span class="tag">Enterprise</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Fire TV Cloud DVR System</h3>
+                        <div class="project-meta">
+                            <span class="project-role">Software Engineer, Amazon</span>
+                            <span class="project-date">2018 - 2020</span>
+                        </div>
+                        <p>Engineered distributed cloud services for DVR schedule generation on Fire TV Recast, resulting in patented innovation. Delivered comprehensive cloud backend architecture enabling seamless DVR functionality across multiple device platforms with 99.9% uptime.</p>
+                        <div class="project-tags">
+                            <span class="tag">Fire TV</span>
+                            <span class="tag">Cloud Services</span>
+                            <span class="tag">DVR Technology</span>
+                            <span class="tag">Patent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Technical Leadership</li>
-            <li>Interviewing</li>
-            <li>Software Architecture</li>
-            <li>English (Professional Working)</li>
-            <li>Tamil (Native or Bilingual)</li>
-            <li>Hindi (Limited Working)</li>
-        </ul>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="section-subtitle">Technologies and competencies</div>
+            </div>
+            <div class="skills-content">
+                <div class="skills-category" data-aos="fade-up">
+                    <div class="category-header">
+                        <i class="fas fa-brain"></i>
+                        <h3>Core Competencies</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">System Architecture & Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Technical Leadership</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">LLM Integration & AI Systems</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Distributed Systems</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="93%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Performance Optimization</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-header">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud & Infrastructure</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">AWS Services (ECS, Lambda, SQS, SNS, Kinesis)</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="94%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Microservices Architecture</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="91%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Event-Driven Systems</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="89%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Container Orchestration</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Programming & Tools</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Java & Spring Framework</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Python & Machine Learning</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Ruby & Rails</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Elasticsearch/OpenSearch</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>If you would like to get in touch, please fill out the form below or reach me via email at <a href="mailto:shenbagaprasanna@gmail.com">shenbagaprasanna@gmail.com</a>.</p>
-        <form action="https://formspree.io/f/mlekgylb" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            
-            <button type="submit">Send</button>
-        </form>
+
+    <!-- Patents Section -->
+    <section id="patents" class="patents-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Patents</h2>
+                <div class="section-subtitle">Intellectual property and innovations</div>
+            </div>
+            <div class="patents-content">
+                <div class="patent-card" data-aos="fade-up">
+                    <div class="patent-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="patent-details">
+                        <h3>Remote Scheduling of Recorded Content for Digital Video Recorders</h3>
+                        <div class="patent-meta">
+                            <div class="patent-number">US 12,028,576 B1</div>
+                            <div class="patent-date">Issued July 02, 2024</div>
+                            <div class="patent-location">Seattle, US</div>
+                        </div>
+                        <div class="patent-inventors">
+                            <strong>Inventors:</strong> Shenbaga Prasanna and others
+                        </div>
+                        <p>Patented innovation for cloud-based DVR scheduling system enabling remote content recording management for Fire TV Recast devices. Solution delivers seamless cross-platform user experience while optimizing resource utilization and system reliability.</p>
+                        <div class="patent-tags">
+                            <span class="tag">Cloud Services</span>
+                            <span class="tag">DVR Technology</span>
+                            <span class="tag">Fire TV</span>
+                            <span class="tag">Remote Scheduling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <footer>
-        <p>&copy; 2024 Shenbaga Prasanna. All rights reserved.</p>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="section-subtitle">Open to discussing new opportunities and collaborations</div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>shenbagaprasanna@gmail.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Phone</h3>
+                        <p>+91 99622 66692</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Location</h3>
+                        <p>Bengaluru, Karnataka, India</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Current Role</h3>
+                        <p>Senior SDE at Amazon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Shenbaga Prasanna. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:shenbagaprasanna@gmail.com" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/shenbagaprasanna" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/praserocking" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
