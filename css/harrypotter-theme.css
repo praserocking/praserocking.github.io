@@ -1,0 +1,532 @@
+/* Harry Potter Theme Styles */
+
+/* Apply Harry Potter-specific styling when persona is active */
+.persona-harrypotter {
+    font-family: var(--font-family-body);
+}
+
+/* Typography overrides for Harry Potter theme */
+.persona-harrypotter h1,
+.persona-harrypotter h2,
+.persona-harrypotter h3,
+.persona-harrypotter h4,
+.persona-harrypotter h5,
+.persona-harrypotter h6 {
+    font-family: var(--font-family);
+    font-weight: 700;
+}
+
+/* Hero section Harry Potter styling */
+.persona-harrypotter .hero-section {
+    background: var(--hero-bg);
+    position: relative;
+}
+
+.persona-harrypotter .hero-background {
+    background: var(--hero-bg);
+}
+
+.persona-harrypotter .hero-particles {
+    background-image: var(--hero-particles-bg);
+}
+
+/* Add magical parchment texture to sections */
+.persona-harrypotter section {
+    position: relative;
+}
+
+.persona-harrypotter section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(116, 0, 1, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(211, 166, 37, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(26, 71, 42, 0.01) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.persona-harrypotter section > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Navigation styling for Harry Potter */
+.persona-harrypotter .header {
+    background: rgba(255, 248, 225, 0.95);
+    border-bottom: 3px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(116, 0, 1, 0.1);
+}
+
+.persona-harrypotter .nav-link {
+    font-family: var(--font-family);
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.persona-harrypotter .nav-link::after {
+    background: var(--accent-color);
+    height: 3px;
+}
+
+/* Logo styling with lightning bolt */
+.persona-harrypotter .logo-text {
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Button styling for Harry Potter theme */
+.persona-harrypotter .btn-primary {
+    background: linear-gradient(135deg, var(--accent-color), #B8860B);
+    border: 2px solid var(--accent-color);
+    color: var(--text-primary);
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.persona-harrypotter .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.persona-harrypotter .btn-primary:hover::before {
+    left: 100%;
+}
+
+.persona-harrypotter .btn-primary:hover {
+    background: linear-gradient(135deg, #B8860B, var(--accent-color));
+    box-shadow: 0 4px 20px rgba(211, 166, 37, 0.4);
+    transform: translateY(-2px);
+}
+
+.persona-harrypotter .btn-secondary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.persona-harrypotter .btn-secondary:hover {
+    background: rgba(116, 0, 1, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Card styling with magical borders */
+.persona-harrypotter .about-card,
+.persona-harrypotter .project-card,
+.persona-harrypotter .timeline-content,
+.persona-harrypotter .education-item,
+.persona-harrypotter .patent-card,
+.persona-harrypotter .contact-card,
+.persona-harrypotter .skills-category {
+    background: var(--bg-primary);
+    border: 3px solid var(--border-color);
+    box-shadow: 
+        0 6px 12px rgba(116, 0, 1, 0.1),
+        inset 0 1px 0 rgba(211, 166, 37, 0.1);
+    position: relative;
+}
+
+.persona-harrypotter .about-card::before,
+.persona-harrypotter .project-card::before,
+.persona-harrypotter .timeline-content::before,
+.persona-harrypotter .education-item::before,
+.persona-harrypotter .patent-card::before,
+.persona-harrypotter .contact-card::before,
+.persona-harrypotter .skills-category::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color), var(--accent-color));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.persona-harrypotter .about-card:hover,
+.persona-harrypotter .project-card:hover,
+.persona-harrypotter .timeline-content:hover,
+.persona-harrypotter .education-item:hover,
+.persona-harrypotter .patent-card:hover,
+.persona-harrypotter .contact-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 
+        0 10px 30px rgba(116, 0, 1, 0.15),
+        0 0 25px rgba(211, 166, 37, 0.2);
+}
+
+.persona-harrypotter .about-card:hover::before,
+.persona-harrypotter .project-card:hover::before,
+.persona-harrypotter .timeline-content:hover::before,
+.persona-harrypotter .education-item:hover::before,
+.persona-harrypotter .patent-card:hover::before,
+.persona-harrypotter .contact-card:hover::before {
+    opacity: 0.1;
+}
+
+/* Icon styling with magical glow */
+.persona-harrypotter .card-icon,
+.persona-harrypotter .project-icon,
+.persona-harrypotter .timeline-icon,
+.persona-harrypotter .education-icon,
+.persona-harrypotter .patent-icon,
+.persona-harrypotter .contact-icon,
+.persona-harrypotter .tldr-icon {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    box-shadow: 0 4px 20px rgba(211, 166, 37, 0.4);
+    position: relative;
+}
+
+.persona-harrypotter .card-icon::after,
+.persona-harrypotter .project-icon::after,
+.persona-harrypotter .timeline-icon::after,
+.persona-harrypotter .education-icon::after,
+.persona-harrypotter .patent-icon::after,
+.persona-harrypotter .contact-icon::after,
+.persona-harrypotter .tldr-icon::after {
+    content: '✨';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.8rem;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Skill bars with magical progress */
+.persona-harrypotter .skill-progress {
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    box-shadow: 0 2px 10px rgba(211, 166, 37, 0.4);
+    position: relative;
+}
+
+.persona-harrypotter .skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: magical-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes magical-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Timeline styling */
+.persona-harrypotter .timeline::before {
+    background: linear-gradient(to bottom, var(--accent-color), var(--primary-color), var(--secondary-color));
+    width: 4px;
+    box-shadow: 0 0 10px rgba(211, 166, 37, 0.3);
+}
+
+/* Tags styling */
+.persona-harrypotter .tag,
+.persona-harrypotter .patent-number,
+.persona-harrypotter .patent-date,
+.persona-harrypotter .patent-location {
+    background: var(--bg-secondary);
+    color: var(--primary-color);
+    border: 2px solid var(--border-color);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.persona-harrypotter .patent-number {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    border-color: var(--primary-color);
+}
+
+.persona-harrypotter .patent-location {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border-color: var(--accent-color);
+}
+
+/* TLDR section styling */
+.persona-harrypotter .tldr-section {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    border-bottom: 4px solid var(--border-color);
+}
+
+.persona-harrypotter .tldr-summary {
+    background: var(--bg-primary);
+    border: 3px solid var(--border-color);
+    box-shadow: 
+        0 10px 30px rgba(116, 0, 1, 0.1),
+        inset 0 1px 0 rgba(211, 166, 37, 0.1);
+}
+
+.persona-harrypotter .tldr-item {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+}
+
+.persona-harrypotter .tldr-item:hover {
+    background: var(--bg-primary);
+    border-color: var(--accent-color);
+    box-shadow: 0 6px 20px rgba(211, 166, 37, 0.3);
+}
+
+/* Social links styling */
+.persona-harrypotter .social-link {
+    background: rgba(211, 166, 37, 0.1);
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.persona-harrypotter .social-link:hover {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    box-shadow: 0 4px 20px rgba(211, 166, 37, 0.5);
+}
+
+/* Footer styling */
+.persona-harrypotter .footer {
+    background: var(--bg-dark);
+    border-top: 4px solid var(--accent-color);
+}
+
+/* Scroll indicator styling */
+.persona-harrypotter .scroll-arrow {
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(211, 166, 37, 0.6);
+    animation: magical-bounce 2s ease-in-out infinite;
+}
+
+@keyframes magical-bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-15px); }
+    60% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* Back to top button */
+.persona-harrypotter .back-to-top {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(211, 166, 37, 0.3);
+}
+
+.persona-harrypotter .back-to-top:hover {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    box-shadow: 0 6px 25px rgba(116, 0, 1, 0.4);
+}
+
+/* Loading screen for Harry Potter theme */
+.persona-harrypotter #loading-screen {
+    background: linear-gradient(135deg, var(--primary-color), var(--bg-dark));
+}
+
+/* Add decorative elements */
+.persona-harrypotter .section-title::before {
+    content: '⚡';
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+    font-size: 0.9em;
+    animation: lightning-flicker 2s ease-in-out infinite;
+}
+
+.persona-harrypotter .section-title::after {
+    content: '⚡';
+    margin-left: 0.5rem;
+    color: var(--accent-color);
+    font-size: 0.9em;
+    animation: lightning-flicker 2s ease-in-out infinite reverse;
+}
+
+@keyframes lightning-flicker {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; text-shadow: 0 0 10px currentColor; }
+}
+
+/* Magical glow effects */
+.persona-harrypotter .hero-title,
+.persona-harrypotter .section-title {
+    text-shadow: 0 0 15px rgba(211, 166, 37, 0.4);
+}
+
+/* Add magical animation to important elements */
+.persona-harrypotter .project-icon,
+.persona-harrypotter .card-icon,
+.persona-harrypotter .timeline-icon {
+    animation: magical-pulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes magical-pulse {
+    0% {
+        box-shadow: 0 4px 20px rgba(211, 166, 37, 0.4);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 6px 25px rgba(211, 166, 37, 0.6), 0 0 30px rgba(116, 0, 1, 0.2);
+        transform: scale(1.05);
+    }
+}
+
+/* Persona switcher styling for Harry Potter theme */
+.persona-harrypotter .persona-btn.active {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    box-shadow: 0 3px 12px rgba(211, 166, 37, 0.5);
+}
+
+.persona-harrypotter .persona-btn:hover {
+    background: rgba(211, 166, 37, 0.1);
+    color: var(--accent-color);
+}
+
+/* Form styling for Harry Potter theme */
+.persona-harrypotter .form-group input,
+.persona-harrypotter .form-group textarea {
+    background: var(--bg-primary);
+    border: 3px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: var(--font-family-body);
+}
+
+.persona-harrypotter .form-group input:focus,
+.persona-harrypotter .form-group textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(211, 166, 37, 0.2);
+}
+
+/* House colors integration */
+.persona-harrypotter .timeline-item:nth-child(1) .timeline-icon {
+    background: linear-gradient(135deg, #740001, #D3A625); /* Gryffindor */
+}
+
+.persona-harrypotter .timeline-item:nth-child(2) .timeline-icon {
+    background: linear-gradient(135deg, #0E1A40, #946B2D); /* Ravenclaw */
+}
+
+.persona-harrypotter .timeline-item:nth-child(3) .timeline-icon {
+    background: linear-gradient(135deg, #1A472A, #AAAAAA); /* Slytherin */
+}
+
+/* Magical floating elements */
+.persona-harrypotter .hero-particles::after {
+    content: '✨ 🪄 ⚡ 🦉 📜';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    opacity: 0.1;
+    animation: magical-float 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes magical-float {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Mobile responsiveness for Harry Potter theme */
+@media (max-width: 768px) {
+    .persona-harrypotter .section-title::before,
+    .persona-harrypotter .section-title::after {
+        display: none;
+    }
+    
+    .persona-harrypotter .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .persona-harrypotter .persona-options {
+        flex-wrap: wrap;
+    }
+}
+
+/* Add Hogwarts house pride elements */
+.persona-harrypotter .about-card:nth-child(1) {
+    border-left: 5px solid #740001; /* Gryffindor */
+}
+
+.persona-harrypotter .about-card:nth-child(2) {
+    border-left: 5px solid #0E1A40; /* Ravenclaw */
+}
+
+.persona-harrypotter .about-card:nth-child(3) {
+    border-left: 5px solid #1A472A; /* Slytherin */
+}
+
+/* Magical text effects */
+.persona-harrypotter .hero-description,
+.persona-harrypotter .about-card p,
+.persona-harrypotter .project-card p {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Special effects for the logo */
+.persona-harrypotter .logo-text:hover {
+    animation: lightning-strike 0.5s ease-in-out;
+}
+
+@keyframes lightning-strike {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); text-shadow: 0 0 20px #D3A625, 0 0 30px #740001; }
+    100% { transform: scale(1); }
+}
+
+/* Add texture overlay for magical parchment effect */
+.persona-harrypotter::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 30% 30%, rgba(116, 0, 1, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(211, 166, 37, 0.01) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Magical loading spinner for Harry Potter theme */
+.persona-harrypotter .persona-loader-spinner {
+    border-color: rgba(211, 166, 37, 0.3);
+    border-top-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(211, 166, 37, 0.3);
+}
+
+/* Special styling for skill names in Harry Potter theme */
+.persona-harrypotter .skill-name {
+    font-family: var(--font-family-body);
+    font-weight: 600;
+}
+
+/* Add magical hover effects to navigation */
+.persona-harrypotter .nav-link:hover {
+    text-shadow: 0 0 8px rgba(211, 166, 37, 0.5);
+}

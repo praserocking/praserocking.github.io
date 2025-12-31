@@ -1,0 +1,336 @@
+/* Lord of the Rings Theme Styles */
+
+/* Apply LOTR-specific styling when persona is active */
+.persona-lotr {
+    font-family: var(--font-family-body);
+}
+
+/* Typography overrides for LOTR theme */
+.persona-lotr h1,
+.persona-lotr h2,
+.persona-lotr h3,
+.persona-lotr h4,
+.persona-lotr h5,
+.persona-lotr h6 {
+    font-family: var(--font-family);
+    font-weight: 600;
+}
+
+/* Hero section LOTR styling */
+.persona-lotr .hero-section {
+    background: var(--hero-bg);
+    position: relative;
+}
+
+.persona-lotr .hero-background {
+    background: var(--hero-bg);
+}
+
+.persona-lotr .hero-particles {
+    background-image: var(--hero-particles-bg);
+}
+
+/* Add parchment texture to sections */
+.persona-lotr section {
+    position: relative;
+}
+
+.persona-lotr section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(218, 165, 32, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.persona-lotr section > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Navigation styling for LOTR */
+.persona-lotr .header {
+    background: rgba(253, 245, 230, 0.95);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.persona-lotr .nav-link {
+    font-family: var(--font-family);
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.persona-lotr .nav-link::after {
+    background: var(--accent-color);
+}
+
+/* Logo styling */
+.persona-lotr .logo-text {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Button styling for LOTR theme */
+.persona-lotr .btn-primary {
+    background: linear-gradient(135deg, var(--accent-color), #B8860B);
+    border: 2px solid var(--accent-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.persona-lotr .btn-primary:hover {
+    background: linear-gradient(135deg, #B8860B, var(--accent-color));
+    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.4);
+}
+
+.persona-lotr .btn-secondary {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.persona-lotr .btn-secondary:hover {
+    background: rgba(218, 165, 32, 0.1);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Card styling with medieval borders */
+.persona-lotr .about-card,
+.persona-lotr .project-card,
+.persona-lotr .timeline-content,
+.persona-lotr .education-item,
+.persona-lotr .patent-card,
+.persona-lotr .contact-card,
+.persona-lotr .skills-category {
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    box-shadow: 
+        0 4px 8px rgba(139, 69, 19, 0.1),
+        inset 0 1px 0 rgba(218, 165, 32, 0.1);
+}
+
+.persona-lotr .about-card:hover,
+.persona-lotr .project-card:hover,
+.persona-lotr .timeline-content:hover,
+.persona-lotr .education-item:hover,
+.persona-lotr .patent-card:hover,
+.persona-lotr .contact-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 
+        0 8px 25px rgba(139, 69, 19, 0.15),
+        0 0 20px rgba(218, 165, 32, 0.1);
+}
+
+/* Icon styling with golden glow */
+.persona-lotr .card-icon,
+.persona-lotr .project-icon,
+.persona-lotr .timeline-icon,
+.persona-lotr .education-icon,
+.persona-lotr .patent-icon,
+.persona-lotr .contact-icon,
+.persona-lotr .tldr-icon {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+}
+
+/* Skill bars with golden progress */
+.persona-lotr .skill-progress {
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    box-shadow: 0 2px 8px rgba(218, 165, 32, 0.3);
+}
+
+/* Timeline styling */
+.persona-lotr .timeline::before {
+    background: linear-gradient(to bottom, var(--accent-color), var(--primary-color));
+    width: 3px;
+}
+
+/* Tags styling */
+.persona-lotr .tag,
+.persona-lotr .patent-number,
+.persona-lotr .patent-date,
+.persona-lotr .patent-location {
+    background: var(--bg-secondary);
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+}
+
+.persona-lotr .patent-number {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+}
+
+.persona-lotr .patent-location {
+    background: var(--accent-color);
+    color: var(--text-primary);
+}
+
+/* TLDR section styling */
+.persona-lotr .tldr-section {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    border-bottom: 3px solid var(--border-color);
+}
+
+.persona-lotr .tldr-summary {
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    box-shadow: 
+        0 8px 25px rgba(139, 69, 19, 0.1),
+        inset 0 1px 0 rgba(218, 165, 32, 0.1);
+}
+
+.persona-lotr .tldr-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.persona-lotr .tldr-item:hover {
+    background: var(--bg-primary);
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.2);
+}
+
+/* Social links styling */
+.persona-lotr .social-link {
+    background: rgba(218, 165, 32, 0.1);
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.persona-lotr .social-link:hover {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.4);
+}
+
+/* Footer styling */
+.persona-lotr .footer {
+    background: var(--bg-dark);
+    border-top: 3px solid var(--accent-color);
+}
+
+/* Scroll indicator styling */
+.persona-lotr .scroll-arrow {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+}
+
+/* Back to top button */
+.persona-lotr .back-to-top {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border: 2px solid var(--primary-color);
+}
+
+.persona-lotr .back-to-top:hover {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    box-shadow: 0 4px 20px rgba(218, 165, 32, 0.4);
+}
+
+/* Loading screen for LOTR theme */
+.persona-lotr #loading-screen {
+    background: linear-gradient(135deg, var(--primary-color), var(--bg-dark));
+}
+
+/* Add decorative elements */
+.persona-lotr .section-title::before {
+    content: '⚜️';
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+    font-size: 0.8em;
+}
+
+.persona-lotr .section-title::after {
+    content: '⚜️';
+    margin-left: 0.5rem;
+    color: var(--accent-color);
+    font-size: 0.8em;
+}
+
+/* Mystical glow effects */
+.persona-lotr .hero-title,
+.persona-lotr .section-title {
+    text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+}
+
+/* Add subtle animation to important elements */
+.persona-lotr .project-icon,
+.persona-lotr .card-icon,
+.persona-lotr .timeline-icon {
+    animation: mystical-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes mystical-pulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(218, 165, 32, 0.5), 0 0 25px rgba(218, 165, 32, 0.2);
+    }
+}
+
+/* Persona switcher styling for LOTR theme */
+.persona-lotr .persona-btn.active {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    box-shadow: 0 2px 8px rgba(218, 165, 32, 0.4);
+}
+
+.persona-lotr .persona-btn:hover {
+    background: rgba(218, 165, 32, 0.1);
+    color: var(--accent-color);
+}
+
+/* Form styling for LOTR theme */
+.persona-lotr .form-group input,
+.persona-lotr .form-group textarea {
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.persona-lotr .form-group input:focus,
+.persona-lotr .form-group textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.1);
+}
+
+/* Mobile responsiveness for LOTR theme */
+@media (max-width: 768px) {
+    .persona-lotr .section-title::before,
+    .persona-lotr .section-title::after {
+        display: none;
+    }
+    
+    .persona-lotr .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+}
+
+/* Add texture overlay for parchment effect */
+.persona-lotr::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(139, 69, 19, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(218, 165, 32, 0.01) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}

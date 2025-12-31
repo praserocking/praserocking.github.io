@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeParticles();
     initializeFormHandling();
     initializeAOS();
+    
+    // Initialize persona system after other components
+    setTimeout(() => {
+        if (window.personaSystem) {
+            window.personaSystem.init();
+        }
+    }, 100);
 });
 
 // Loading Screen
@@ -113,25 +120,25 @@ function initializeNavigation() {
 }
 
 // Typing Effect
+let currentTypingTexts = [
+    'Senior Software Engineer',
+    'Cloud Architecture Expert',
+    'LLM Infrastructure Specialist',
+    'Full-Stack Developer',
+    'Technical Leader'
+];
+
 function initializeTypingEffect() {
     const typingElement = document.querySelector('.typing-text');
     if (!typingElement) return;
 
-    const texts = [
-        'Senior Software Engineer',
-        'Cloud Architecture Expert',
-        'LLM Infrastructure Specialist',
-        'Full-Stack Developer',
-        'Technical Leader'
-    ];
-    
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let typeSpeed = 100;
 
     function typeWriter() {
-        const currentText = texts[textIndex];
+        const currentText = currentTypingTexts[textIndex];
         
         if (isDeleting) {
             typingElement.textContent = currentText.substring(0, charIndex - 1);
@@ -148,7 +155,7 @@ function initializeTypingEffect() {
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
+            textIndex = (textIndex + 1) % currentTypingTexts.length;
             typeSpeed = 500; // Pause before next word
         }
 
@@ -157,7 +164,25 @@ function initializeTypingEffect() {
 
     // Start typing effect
     setTimeout(typeWriter, 1000);
+    
+    // Store reference for persona system
+    window.currentTypeWriter = typeWriter;
 }
+
+// Function to update typing texts (called by persona system)
+window.updateTypingTexts = function(newTexts) {
+    currentTypingTexts = newTexts;
+    // Reset typing effect with new texts
+    const typingElement = document.querySelector('.typing-text');
+    if (typingElement) {
+        typingElement.textContent = '';
+        setTimeout(() => {
+            if (window.currentTypeWriter) {
+                window.currentTypeWriter();
+            }
+        }, 500);
+    }
+};
 
 // Scroll Effects
 function initializeScrollEffects() {
