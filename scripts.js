@@ -128,7 +128,25 @@ let currentTypingTexts = [
     'Technical Leader'
 ];
 
+let typingTimeout = null;
+let typingActive = false;
+
 function initializeTypingEffect() {
+    const typingElement = document.querySelector('.typing-text');
+    if (!typingElement) return;
+
+    startTypingEffect();
+}
+
+function startTypingEffect() {
+    // Clear any existing typing effect
+    if (typingTimeout) {
+        clearTimeout(typingTimeout);
+        typingTimeout = null;
+    }
+    
+    typingActive = true;
+    
     const typingElement = document.querySelector('.typing-text');
     if (!typingElement) return;
 
@@ -138,6 +156,8 @@ function initializeTypingEffect() {
     let typeSpeed = 100;
 
     function typeWriter() {
+        if (!typingActive) return; // Stop if typing was disabled
+        
         const currentText = currentTypingTexts[textIndex];
         
         if (isDeleting) {
@@ -159,29 +179,38 @@ function initializeTypingEffect() {
             typeSpeed = 500; // Pause before next word
         }
 
-        setTimeout(typeWriter, typeSpeed);
+        typingTimeout = setTimeout(typeWriter, typeSpeed);
     }
 
     // Start typing effect
-    setTimeout(typeWriter, 1000);
-    
-    // Store reference for persona system
-    window.currentTypeWriter = typeWriter;
+    typingTimeout = setTimeout(typeWriter, 1000);
+}
+
+function stopTypingEffect() {
+    typingActive = false;
+    if (typingTimeout) {
+        clearTimeout(typingTimeout);
+        typingTimeout = null;
+    }
 }
 
 // Function to update typing texts (called by persona system)
 window.updateTypingTexts = function(newTexts) {
     currentTypingTexts = newTexts;
-    // Reset typing effect with new texts
+    
+    // Stop current typing effect
+    stopTypingEffect();
+    
+    // Clear the text
     const typingElement = document.querySelector('.typing-text');
     if (typingElement) {
         typingElement.textContent = '';
-        setTimeout(() => {
-            if (window.currentTypeWriter) {
-                window.currentTypeWriter();
-            }
-        }, 500);
     }
+    
+    // Start new typing effect with new texts
+    setTimeout(() => {
+        startTypingEffect();
+    }, 300);
 };
 
 // Scroll Effects
