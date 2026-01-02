@@ -1,262 +1,377 @@
-/*
-Author: Shenbaga Prasanna
-Date: 18/06/2015
-Approach: Minimax Theorem
-PS: If you can beat the system, ping me at shenbagaprasanna@gmail.com.
-*/
-var symbol = "O";
-var map_grid = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']];
-var x_wins = 0, o_wins = 0, draw = 0;
+/**
+ * Modern Tic-Tac-Toe Game
+ * Enhanced version with better UX, responsive design, and improved AI
+ * Original AI logic by Shenbaga Prasanna (Minimax Algorithm)
+ */
 
-var flip = function () { symbol = symbol == "O" ? "X" : "O"; };
+class TicTacToeGame {
+    constructor() {
+        this.symbol = "O"; // Player symbol
+        this.aiSymbol = "X"; // AI symbol
+        this.mapGrid = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']];
+        this.scores = { x: 0, o: 0, draw: 0 };
+        this.gameActive = true;
+        this.currentPlayer = "O";
+        
+        this.initializeGame();
+        this.bindEvents();
+        this.updateScoreDisplay();
+        this.updateGameStatus();
+    }
 
-var no_sym = function (a, b) {
-    return a == '-' && b == '-';
-};
+    initializeGame() {
+        // Get DOM elements
+        this.gameBoard = document.getElementById('game-board');
+        this.cells = document.querySelectorAll('.cell');
+        this.modal = document.getElementById('game-modal');
+        this.modalTitle = document.getElementById('modal-title');
+        this.modalMessage = document.getElementById('modal-message');
+        this.modalClose = document.getElementById('modal-close');
+        this.resetGameBtn = document.getElementById('reset-game');
+        this.resetScoresBtn = document.getElementById('reset-scores');
+        this.currentPlayerDisplay = document.getElementById('current-player');
+        
+        // Score elements
+        this.xScoreElement = document.getElementById('x-score');
+        this.oScoreElement = document.getElementById('o-score');
+        this.drawScoreElement = document.getElementById('draw-score');
+    }
 
-var both_sym = function (a, b, symbol) {
-    return a == symbol && b == symbol;
-};
-var if_one = function (a, b, c, symbol) {
-    var result = false;
-    if (a == symbol || b == symbol || c == symbol) {
-        if (no_sym(a, b) || no_sym(b, c) || no_sym(a, c)) {
-            result = true;
+    bindEvents() {
+        // Cell click events
+        this.cells.forEach(cell => {
+            cell.addEventListener('click', (e) => this.handleCellClick(e));
+            // Add keyboard support
+            cell.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.handleCellClick(e);
+                }
+            });
+            // Make cells focusable
+            cell.setAttribute('tabindex', '0');
+        });
+
+        // Button events
+        this.resetGameBtn.addEventListener('click', () => this.resetGame());
+        this.resetScoresBtn.addEventListener('click', () => this.resetScores());
+        this.modalClose.addEventListener('click', () => this.closeModal());
+
+        // Modal backdrop click
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.closeModal();
+            }
+        });
+
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('show')) {
+                this.closeModal();
+            }
+        });
+    }
+
+    handleCellClick(event) {
+        if (!this.gameActive) return;
+
+        const cell = event.target;
+        const cellId = cell.id;
+        
+        if (cell.textContent !== '') return; // Cell already occupied
+
+        const [row, col] = [parseInt(cellId[0]), parseInt(cellId[1])];
+        
+        // Player move
+        this.makeMove(row, col, this.symbol, cell);
+        
+        if (this.checkWin(this.symbol)) {
+            this.endGame('win', 'Congratulations! You won! 🎉');
+            this.scores.o++;
+            return;
+        }
+        
+        if (this.checkDraw()) {
+            this.endGame('draw', "It's a draw! Good game! 🤝");
+            this.scores.draw++;
+            return;
+        }
+
+        // AI move
+        this.currentPlayer = this.aiSymbol;
+        this.updateGameStatus();
+        
+        // Add slight delay for better UX
+        setTimeout(() => {
+            this.aiTurn();
+            
+            if (this.checkWin(this.aiSymbol)) {
+                this.endGame('lose', 'AI wins this round! Try again! 🤖');
+                this.scores.x++;
+                return;
+            }
+            
+            if (this.checkDraw()) {
+                this.endGame('draw', "It's a draw! Good game! 🤝");
+                this.scores.draw++;
+                return;
+            }
+
+            this.currentPlayer = this.symbol;
+            this.updateGameStatus();
+        }, 300);
+    }
+
+    makeMove(row, col, symbol, cellElement) {
+        this.mapGrid[row][col] = symbol;
+        cellElement.textContent = symbol;
+        cellElement.classList.add(symbol.toLowerCase());
+        
+        // Add animation
+        cellElement.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+            cellElement.style.transform = 'scale(1)';
+        }, 150);
+    }
+
+    aiTurn() {
+        const bestMove = this.getBestMove();
+        if (bestMove) {
+            const cell = document.getElementById(`${bestMove.row}${bestMove.col}`);
+            this.makeMove(bestMove.row, bestMove.col, this.aiSymbol, cell);
         }
     }
-    return result;
-};
-var if_two = function (a, b, c, symbol) {
-    var result = false;
-    if (a == '-' || b == '-' || c == '-') {
-        if (both_sym(a, b, symbol) || both_sym(b, c, symbol) || both_sym(a, c, symbol)) {
-            result = true;
+
+    getBestMove() {
+        let maxScore = -Infinity;
+        let bestMove = null;
+
+        // If board is empty, take center
+        if (this.isEmpty()) {
+            return { row: 1, col: 1 };
         }
-    }
-    return result;
-};
 
-var check_eq = function (a, b, c, symbol) {
-    return (a == symbol) && (a == b) && (b == c);
-};
-
-var three_corner_empty = function () {
-    var corners = [map_grid[0][0], map_grid[0][2], map_grid[2][2], map_grid[2][0]];
-    var count = 0;
-    corners.forEach(function (node) {
-        if (node == '-')
-            count++;
-    });
-    return count >= 3;
-};
-
-var reset = function () {
-    symbol = "O";
-    map_grid = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']];
-    $(".box").each(function () {
-        $(this).html("");
-    });
-};
-
-var AI_Turn = function () {
-    var max_score_x = -999999999,max_score_o = -999999999;
-    var mi, mj, score_x,score_o;
-    if (isempty()) {
-        mi = 1;
-        mj = 1;
-    }
-    else {
-        for (var i = 0; i < 3; i++) {
-                for (var j = 0; j < 3; j++) {
-                    if (map_grid[i][j] == '-') {
-                        score_x = calc_score(i, j, "X", "O");
-                        if (max_score_x < score_x) {
-                            max_score_x = score_x;
-                            mi = i;
-                            mj = j;
-                        }
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (this.mapGrid[i][j] === '-') {
+                    const score = this.calculateScore(i, j, this.aiSymbol, this.symbol);
+                    if (score > maxScore) {
+                        maxScore = score;
+                        bestMove = { row: i, col: j };
                     }
                 }
-        }
-    }
-    map_grid[mi][mj] = "X";
-    $("#" + mi + mj).html("X");
-};
-
-
-var calc_score = function (x, y, fav, agn) {
-    score = 0;
-    map_grid[x][y] = fav;
-    for (var i = 0; i < 3; i++) {
-        if (if_one(map_grid[i][0], map_grid[i][1], map_grid[i][2], fav)) {
-            score += 1;
-        }
-        if (if_two(map_grid[i][0], map_grid[i][1], map_grid[i][2], fav)) {
-            score += 10;
-        }
-        if (check_eq(map_grid[i][0], map_grid[i][1], map_grid[i][2], fav)) {
-            score += 100;
-        }
-    }
-    for (var i = 0; i < 3; i++) {
-        if (if_one(map_grid[0][i], map_grid[1][i], map_grid[2][i], fav)) {
-            score += 1;
-        }
-        if (if_two(map_grid[0][i], map_grid[1][i], map_grid[2][i], fav)) {
-            score += 10;
-        }
-        if (check_eq(map_grid[0][i], map_grid[1][i], map_grid[2][i], fav)) {
-            score += 100;
-        }
-    }
-    if (if_one(map_grid[0][0], map_grid[1][1], map_grid[2][2], fav))
-        score += 1;
-    if (if_two(map_grid[0][0], map_grid[1][1], map_grid[2][2], fav))
-        score += 10;
-    if (check_eq(map_grid[0][0], map_grid[1][1], map_grid[2][2], fav))
-        score += 100;
-    if (if_one(map_grid[0][2], map_grid[1][1], map_grid[2][0], fav))
-        score += 1;
-    if (if_two(map_grid[0][2], map_grid[1][1], map_grid[2][0], fav))
-        score += 10;
-    if (check_eq(map_grid[0][2], map_grid[1][1], map_grid[2][0], fav))
-        score += 100;
-
-    for (var i = 0; i < 3; i++) {
-        if (if_one(map_grid[i][0], map_grid[i][1], map_grid[i][2], agn)) {
-            score -= 1;
-        }
-        if (if_two(map_grid[i][0], map_grid[i][1], map_grid[i][2], agn)) {
-            score -= 10;
-        }
-        if (check_eq(map_grid[i][0], map_grid[i][1], map_grid[i][2], agn)) {
-            score -= 100;
-        }
-    }
-    for (var i = 0; i < 3; i++) {
-        if (if_one(map_grid[0][i], map_grid[1][i], map_grid[2][i], agn)) {
-            score -= 1;
-        }
-        if (if_two(map_grid[0][i], map_grid[1][i], map_grid[2][i], agn)) {
-            score -= 10;
-        }
-        if (check_eq(map_grid[0][i], map_grid[1][i], map_grid[2][i], agn)) {
-            score -= 100;
-        }
-    }
-    if (if_one(map_grid[0][0], map_grid[1][1], map_grid[2][2], agn))
-        score -= 1;
-    if (if_two(map_grid[0][0], map_grid[1][1], map_grid[2][2], agn))
-        score -= 10;
-    if (check_eq(map_grid[0][0], map_grid[1][1], map_grid[2][2], agn))
-        score -= 100;
-    if (if_one(map_grid[0][2], map_grid[1][1], map_grid[2][0], agn))
-        score -= 1;
-    if (if_two(map_grid[0][2], map_grid[1][1], map_grid[2][0], agn))
-        score -= 10;
-    if (check_eq(map_grid[0][2], map_grid[1][1], map_grid[2][0], agn))
-        score -= 100;
-    map_grid[x][y] = '-';
-    return score;
-};
-
-
-var checkwin = function (symbol) {
-    var result = false;
-    for (var i = 0; i < 3; i++) {
-        if (check_eq(map_grid[i][0], map_grid[i][1], map_grid[i][2], symbol)) {
-            result = true;
-        }
-    }
-    if (!result) {
-        for (var i = 0; i < 3; i++) {
-            if (check_eq(map_grid[0][i], map_grid[1][i], map_grid[2][i], symbol)) {
-                result = true;
             }
         }
-    }
-    if (!result) {
-        if (check_eq(map_grid[0][0], map_grid[1][1], map_grid[2][2], symbol)) {
-            result = true;
-        }
-    }
-    if (!result) {
-        if (check_eq(map_grid[0][2], map_grid[1][1], map_grid[2][0], symbol)) {
-            result = true;
-        }
+
+        return bestMove;
     }
 
-    return result;
-};
+    calculateScore(x, y, fav, agn) {
+        let score = 0;
+        this.mapGrid[x][y] = fav;
 
-var checkdraw = function () {
-    var result = true;
-    for (var i = 0; i < 3; i++) {
-        for (var j = 0; j < 3; j++) {
-            if (map_grid[i][j] == '-') {
-                result = false;
-                break;
-            }
-        }
-        if (!result)
-            break;
+        // Check rows, columns, and diagonals for favorable moves
+        score += this.evaluateLines(fav, agn);
+
+        this.mapGrid[x][y] = '-';
+        return score;
     }
-    return result;
-};
 
-var isempty = function () {
-    var result = true;
-    for (var i = 0; i < 3; i++) {
-        for (var j = 0; j < 3; j++) {
-            if (map_grid[i][j] != "-") {
-                result = false;
-                break;
-            }
+    evaluateLines(fav, agn) {
+        let score = 0;
+
+        // Check rows
+        for (let i = 0; i < 3; i++) {
+            score += this.evaluateLine(this.mapGrid[i][0], this.mapGrid[i][1], this.mapGrid[i][2], fav, agn);
         }
-        if (!result)
-            break;
+
+        // Check columns
+        for (let i = 0; i < 3; i++) {
+            score += this.evaluateLine(this.mapGrid[0][i], this.mapGrid[1][i], this.mapGrid[2][i], fav, agn);
+        }
+
+        // Check diagonals
+        score += this.evaluateLine(this.mapGrid[0][0], this.mapGrid[1][1], this.mapGrid[2][2], fav, agn);
+        score += this.evaluateLine(this.mapGrid[0][2], this.mapGrid[1][1], this.mapGrid[2][0], fav, agn);
+
+        return score;
     }
-    return result;
-};
 
-var update_scores = function () {
-    $("#xscore span").html(x_wins);
-    $("#oscore span").html(o_wins);
-    $("#draw span").html(draw);
-};
+    evaluateLine(a, b, c, fav, agn) {
+        let score = 0;
 
-$(document).ready(function () {
-    update_scores();
-    $(".box").on("click", function () {
-        if ($(this).html() == "") {
-            var index = $(this).context.id.split("");
-            map_grid[parseInt(index[0])][parseInt(index[1])] = symbol;
-            $(this).html(symbol);
-            if (checkwin(symbol)) {
-                alert(symbol);
-                o_wins++;
-                update_scores();
-                reset();
-            }
-            if (checkdraw()) {
-                alert("draw");
-                draw++;
-                update_scores();
-                reset();
-            }
-            AI_Turn();
-            if (checkwin("X")) {
-                alert("X");
-                x_wins++;
-                update_scores();
-                reset();
-            }
-            if (checkdraw()) {
-                alert("draw");
-                draw++;
-                update_scores();
-                reset();
+        // Check opponent moves to block FIRST (higher priority)
+        if (this.checkEqual(a, b, c, agn)) score -= 1000;  // Block opponent win (highest priority)
+        if (this.ifTwo(a, b, c, agn)) score -= 100;        // Block opponent two-in-a-row (very high priority)
+        if (this.ifOne(a, b, c, agn)) score -= 1;
+
+        // Check favorable moves (AI)
+        if (this.checkEqual(a, b, c, fav)) score += 500;   // AI win (high priority, but less than blocking)
+        if (this.ifTwo(a, b, c, fav)) score += 50;         // AI two-in-a-row
+        if (this.ifOne(a, b, c, fav)) score += 1;
+
+        return score;
+    }
+
+    checkEqual(a, b, c, symbol) {
+        return (a === symbol) && (a === b) && (b === c);
+    }
+
+    ifTwo(a, b, c, symbol) {
+        // Check if exactly 2 positions have the symbol and 1 is empty
+        const symbolCount = [a, b, c].filter(cell => cell === symbol).length;
+        const emptyCount = [a, b, c].filter(cell => cell === '-').length;
+        return symbolCount === 2 && emptyCount === 1;
+    }
+
+    ifOne(a, b, c, symbol) {
+        // Check if exactly 1 position has the symbol and 2 are empty
+        const symbolCount = [a, b, c].filter(cell => cell === symbol).length;
+        const emptyCount = [a, b, c].filter(cell => cell === '-').length;
+        return symbolCount === 1 && emptyCount === 2;
+    }
+
+    checkWin(symbol) {
+        // Check rows
+        for (let i = 0; i < 3; i++) {
+            if (this.checkEqual(this.mapGrid[i][0], this.mapGrid[i][1], this.mapGrid[i][2], symbol)) {
+                this.highlightWinningCells([`${i}0`, `${i}1`, `${i}2`]);
+                return true;
             }
         }
-    });
+
+        // Check columns
+        for (let i = 0; i < 3; i++) {
+            if (this.checkEqual(this.mapGrid[0][i], this.mapGrid[1][i], this.mapGrid[2][i], symbol)) {
+                this.highlightWinningCells([`0${i}`, `1${i}`, `2${i}`]);
+                return true;
+            }
+        }
+
+        // Check diagonals
+        if (this.checkEqual(this.mapGrid[0][0], this.mapGrid[1][1], this.mapGrid[2][2], symbol)) {
+            this.highlightWinningCells(['00', '11', '22']);
+            return true;
+        }
+
+        if (this.checkEqual(this.mapGrid[0][2], this.mapGrid[1][1], this.mapGrid[2][0], symbol)) {
+            this.highlightWinningCells(['02', '11', '20']);
+            return true;
+        }
+
+        return false;
+    }
+
+    highlightWinningCells(cellIds) {
+        cellIds.forEach(id => {
+            const cell = document.getElementById(id);
+            cell.classList.add('winning');
+        });
+    }
+
+    checkDraw() {
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (this.mapGrid[i][j] === '-') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    isEmpty() {
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (this.mapGrid[i][j] !== '-') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    endGame(result, message) {
+        this.gameActive = false;
+        this.updateScoreDisplay();
+        
+        // Show modal with result
+        setTimeout(() => {
+            this.showModal(result, message);
+        }, 600);
+    }
+
+    showModal(result, message) {
+        const titles = {
+            win: '🎉 You Won!',
+            lose: '🤖 AI Wins!',
+            draw: '🤝 Draw!'
+        };
+
+        this.modalTitle.textContent = titles[result] || 'Game Over';
+        this.modalMessage.textContent = message;
+        this.modal.classList.add('show');
+        
+        // Focus the close button for accessibility
+        setTimeout(() => {
+            this.modalClose.focus();
+        }, 100);
+    }
+
+    closeModal() {
+        this.modal.classList.remove('show');
+        this.resetGame();
+    }
+
+    resetGame() {
+        this.symbol = "O";
+        this.currentPlayer = "O";
+        this.mapGrid = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']];
+        this.gameActive = true;
+
+        this.cells.forEach(cell => {
+            cell.textContent = '';
+            cell.classList.remove('x', 'o', 'winning');
+            cell.style.transform = '';
+        });
+
+        this.updateGameStatus();
+    }
+
+    resetScores() {
+        this.scores = { x: 0, o: 0, draw: 0 };
+        this.updateScoreDisplay();
+    }
+
+    updateScoreDisplay() {
+        this.xScoreElement.textContent = this.scores.x;
+        this.oScoreElement.textContent = this.scores.o;
+        this.drawScoreElement.textContent = this.scores.draw;
+    }
+
+    updateGameStatus() {
+        const messages = {
+            'O': 'Your turn (O)',
+            'X': 'AI is thinking... (X)'
+        };
+        this.currentPlayerDisplay.textContent = messages[this.currentPlayer] || 'Game Over';
+    }
+}
+
+// Initialize game when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new TicTacToeGame();
 });
+
+// Add service worker for offline functionality (optional)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+                console.log('SW registration failed: ', registrationError);
+            });
+    });
+}
