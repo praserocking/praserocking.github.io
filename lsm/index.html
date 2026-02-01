@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSM Tree Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>LSM Tree Visualizer</h1>
+            <p>Interactive demonstration of Log-Structured Merge Tree operations with Write-Ahead Log</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="control-panel">
+                <div class="form-group">
+                    <label for="key">Key:</label>
+                    <input type="text" id="key" placeholder="Enter key (e.g., user123)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="value">Value:</label>
+                    <input type="text" id="value" placeholder="Enter value (e.g., John Doe)">
+                </div>
+                
+                <button class="btn btn-primary" onclick="writeData()">Write Data</button>
+                
+                <div class="form-group">
+                    <label for="searchKey">Search Key:</label>
+                    <input type="text" id="searchKey" placeholder="Enter key to search">
+                </div>
+                
+                <button class="btn btn-secondary" onclick="readData()">Read Data</button>
+                
+                <div class="form-group">
+                    <label for="memtableSize">Memtable Size Limit:</label>
+                    <select id="memtableSize">
+                        <option value="3">3 items (fast demo)</option>
+                        <option value="5" selected>5 items</option>
+                        <option value="8">8 items</option>
+                        <option value="10">10 items</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-secondary" onclick="forceCompaction()">Force Compaction</button>
+                <button class="btn btn-secondary" onclick="generateBulkData()">Generate Bulk Data</button>
+                <button class="btn btn-secondary" onclick="clearAll()">Clear All</button>
+                
+                <div class="stats">
+                    <h3>Statistics</h3>
+                    <div class="stat-item">
+                        <span>Total Writes:</span>
+                        <span id="totalWrites">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Total Reads:</span>
+                        <span id="totalReads">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Compactions:</span>
+                        <span id="totalCompactions">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Memtable Size:</span>
+                        <span id="currentMemtableSize">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>WAL Entries:</span>
+                        <span id="walEntries">0</span>
+                    </div>
+                </div>
+
+                <div class="stats" style="background: #fff3cd; margin-top: 10px;">
+                    <h3 style="color: #856404;">How LSM Works</h3>
+                    <div style="font-size: 12px; line-height: 1.4;">
+                        <p><strong>1. WAL Write</strong> to disk first (durability)</p>
+                        <p><strong>2. Memtable Insert</strong> in memory</p>
+                        <p><strong>3. Flush</strong> when memtable is full</p>
+                        <p><strong>4. Compact</strong> when level has too many files</p>
+                        <p><strong>5. Reads</strong> check memtable → L0 → L1 → L2</p>
+                        <p style="margin-top: 8px; color: #856404;"><em>Use "Generate Bulk Data" to see compactions!</em></p>
+                    </div>
+                </div>
+
+                <div class="stats" style="background: #e8f5e8; margin-top: 10px;">
+                    <h3 style="color: #2d5a2d;">Level Differences</h3>
+                    <div style="font-size: 11px; line-height: 1.3;">
+                        <p><strong>L0:</strong> Overlapping keys, newest data</p>
+                        <p><strong>L1:</strong> Non-overlapping, sorted ranges</p>
+                        <p><strong>L2:</strong> Larger files, oldest data</p>
+                        <p><strong>Size:</strong> Each level ~10x larger</p>
+                        <p><strong>Reads:</strong> L0 checks all files, L1+ binary search</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="visualization">
+                <div class="clock" id="clock"></div>
+                
+                <div class="operation-log">
+                    <h3>Operation Log</h3>
+                    <div id="logEntries"></div>
+                </div>
+                
+                <div class="lsm-structure">
+                    <div class="wal memtable">
+                        <h3>Write-Ahead Log (WAL) - Disk</h3>
+                        <div id="walEntries" style="max-height: 100px; overflow-y: auto;"></div>
+                    </div>
+
+                    <div id="writeProcess" class="write-process" style="display: none;">
+                        <div class="write-step" id="step1">1. WAL Write</div>
+                        <div class="arrow">→</div>
+                        <div class="write-step" id="step2">2. Memtable Insert</div>
+                        <div class="arrow">→</div>
+                        <div class="write-step" id="step3">3. Acknowledge</div>
+                    </div>
+
+                    <div class="memtable">
+                        <h3>Memtable (In-Memory)</h3>
+                        <div class="data-items" id="memtable"></div>
+                    </div>
+                    
+                    <div class="sstable-level">
+                        <div class="level-info">
+                            <h3>Level 0 SSTables <small style="font-weight: normal; color: #666;">(Overlapping Keys)</small></h3>
+                            <span id="level0Count">0 files</span>
+                        </div>
+                        <div class="data-items" id="level0"></div>
+                        <div style="font-size: 11px; color: #666; margin-top: 5px;">
+                            Direct flush from memtable • Keys can overlap between files • Must check all files during reads
+                        </div>
+                    </div>
+                    
+                    <div class="sstable-level">
+                        <div class="level-info">
+                            <h3>Level 1 SSTables <small style="font-weight: normal; color: #666;">(Non-overlapping)</small></h3>
+                            <span id="level1Count">0 files</span>
+                        </div>
+                        <div class="data-items" id="level1"></div>
+                        <div style="font-size: 11px; color: #666; margin-top: 5px;">
+                            Sorted key ranges • No overlap between files • Binary search for reads • ~10x larger than L0
+                        </div>
+                    </div>
+                    
+                    <div class="sstable-level">
+                        <div class="level-info">
+                            <h3>Level 2 SSTables <small style="font-weight: normal; color: #666;">(Largest Files)</small></h3>
+                            <span id="level2Count">0 files</span>
+                        </div>
+                        <div class="data-items" id="level2"></div>
+                        <div style="font-size: 11px; color: #666; margin-top: 5px;">
+                            Largest capacity • Oldest data • Most efficient storage • ~10x larger than L1
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="searchResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lsm-tree.js"></script>
+</body>
+</html>
