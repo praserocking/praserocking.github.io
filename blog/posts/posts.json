@@ -7,7 +7,8 @@
       "description": "This is a sample blog post demonstrating the markdown format",
       "category": "tutorial",
       "tags": ["markdown", "blog", "sample", "tutorial"],
-      "excerpt": "Learn how to write blog posts in markdown format with frontmatter metadata"
+      "excerpt": "Learn how to write blog posts in markdown format with frontmatter metadata",
+      "content": "# Sample Blog Post\n\nThis is a sample blog post written in **Markdown** format. It demonstrates how to structure your blog posts with frontmatter metadata and markdown content.\n\n## Frontmatter Format\n\nEach blog post should start with YAML frontmatter containing:\n\n- `title`: The post title\n- `date`: Publication date (YYYY-MM-DD format)\n- `description`: Meta description for SEO\n- `category`: Post category for filtering\n- `tags`: Array of tags\n- `excerpt`: Short description for post listing\n\n## Markdown Features\n\n### Headers\n\nYou can use different header levels:\n\n# H1 Header\n## H2 Header  \n### H3 Header\n\n### Text Formatting\n\n- **Bold text** using `**bold**`\n- *Italic text* using `*italic*`\n- `Inline code` using backticks\n- ~~Strikethrough~~ using `~~text~~`\n\n### Lists\n\nUnordered list:\n- Item 1\n- Item 2\n- Item 3\n\nOrdered list:\n1. First item\n2. Second item\n3. Third item\n\n### Code Blocks\n\n```javascript\nfunction example() {\n    console.log(\"Hello, world!\");\n    return \"This is a code block\";\n}\n```\n\n### Blockquotes\n\n> This is a blockquote. It's useful for highlighting important information or quotes from other sources.\n\n### Links\n\nYou can create [links to other pages](https://example.com) or reference other posts.\n\n## Conclusion\n\nThis sample post shows the standard format for blog posts. For GitHub Pages, the markdown content is embedded directly in the posts.json file to avoid 404 errors when fetching .md files."
     }
   ]
 }

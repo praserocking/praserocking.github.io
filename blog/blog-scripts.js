@@ -81,25 +81,29 @@ class BlogApp {
     }
 
     async openPost(filename) {
-        if (!this.renderer) {
-            console.error('Markdown renderer not available');
-            return;
-        }
-
         try {
             // Show loading state
             this.showPostView();
-            this.renderPostLoading();
 
-            // Load and render post
-            const post = await this.renderer.loadPost(filename);
-            if (post) {
+            // Find post in loaded posts
+            const postData = this.posts.find(p => p.filename === filename);
+            if (postData && postData.content) {
+                // Render markdown content
+                const renderedContent = marked.parse(postData.content);
+                
+                const post = {
+                    ...postData,
+                    content: renderedContent
+                };
+                
                 this.currentPost = post;
                 this.currentView = 'post';
                 this.renderPost(post);
                 
                 // Update URL without page reload
                 history.pushState({view: 'post', filename}, post.title, `?post=${filename}`);
+            } else {
+                console.error('Post not found or no content:', filename);
             }
         } catch (error) {
             console.error('Error loading post:', error);
