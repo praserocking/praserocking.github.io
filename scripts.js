@@ -58,8 +58,16 @@ function initializeNavigation() {
     // Smooth scrolling for navigation links
     navLinks.forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
+            
+            // Check if it's an external link (like blog/index.html)
+            if (targetId.includes('/') || targetId.includes('.html')) {
+                // Let the browser handle external links normally
+                return;
+            }
+            
+            // Handle internal anchor links
+            e.preventDefault();
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {

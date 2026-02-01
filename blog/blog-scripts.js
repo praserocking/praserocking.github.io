@@ -8,11 +8,6 @@ class BlogApp {
     }
 
     async init() {
-        // Initialize marked.js renderer
-        if (typeof marked !== 'undefined') {
-            this.renderer = new MarkdownRenderer();
-        }
-
         // Load posts and render
         await this.loadPosts();
         this.setupEventListeners();
