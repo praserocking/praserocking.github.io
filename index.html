@@ -614,6 +614,44 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
+    <!-- Sticky Project Links -->
+    <div class="sticky-project-links" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px;">
+        <a href="isola/index.html" target="_blank" class="sticky-link" style="background: #ff6b6b; color: white; padding: 12px 16px; border-radius: 50px; text-decoration: none; font-size: 14px; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;" title="🏆 Global 8th Place - Isola Game">
+            <i class="fas fa-trophy"></i>
+            <span>Isola Game</span>
+        </a>
+        <a href="tictactoe/index.html" target="_blank" class="sticky-link" style="background: #4ecdc4; color: white; padding: 12px 16px; border-radius: 50px; text-decoration: none; font-size: 14px; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;" title="Perfect AI - Tic Tac Toe">
+            <i class="fas fa-brain"></i>
+            <span>Tic-Tac-Toe</span>
+        </a>
+        <a href="lsm/index.html" target="_blank" class="sticky-link" style="background: #45b7d1; color: white; padding: 12px 16px; border-radius: 50px; text-decoration: none; font-size: 14px; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;" title="Database Internals - LSM Tree Visualizer">
+            <i class="fas fa-database"></i>
+            <span>LSM Tree</span>
+        </a>
+    </div>
+
+    <style>
+        .sticky-link:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25) !important;
+        }
+        
+        @media (max-width: 768px) {
+            .sticky-project-links {
+                bottom: 10px !important;
+                right: 10px !important;
+                gap: 8px !important;
+            }
+            .sticky-link {
+                padding: 10px 12px !important;
+                font-size: 12px !important;
+            }
+            .sticky-link span {
+                display: none !important;
+            }
+        }
+    </style>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="js/persona-system.js"></script>
     <script src="scripts.js"></script>
