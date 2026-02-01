@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Shenbaga Prasanna</title>
+    <meta name="description" content="Technical blog by Shenbaga Prasanna">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="blog-styles.css">
+</head>
+<body>
+    <div class="blog-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="back-home">
+                    <i class="fas fa-arrow-left"></i>
+                    Checkout Portfolio
+                </a>
+                <h1 class="sidebar-title">Blog</h1>
+                <p class="sidebar-subtitle">Life, Universe and Everything.</p>
+            </div>
+
+            <nav class="nav-section">
+                <h3>Archive</h3>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" data-category="all">All Posts</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-section">
+                <h3>Recent Posts</h3>
+                <ul class="nav-list" id="recent-posts">
+                    <!-- Recent posts will be populated here -->
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1 class="content-title">Prasanna's Musings</h1>
+                <p class="content-subtitle">Articles & Insights</p>
+            </div>
+
+            <div class="blog-posts" id="blog-posts">
+                <div class="empty-state">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>No posts yet</h3>
+                    <p>Blog posts will appear here when added.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="markdown-renderer.js"></script>
+    <script src="blog-scripts.js"></script>
+</body>
+</html>

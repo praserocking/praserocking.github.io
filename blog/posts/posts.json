@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {
+      "filename": "sample-post.md",
+      "title": "Sample Blog Post",
+      "date": "2026-01-02",
+      "description": "This is a sample blog post demonstrating the markdown format",
+      "category": "tutorial",
+      "tags": ["markdown", "blog", "sample", "tutorial"],
+      "excerpt": "Learn how to write blog posts in markdown format with frontmatter metadata"
+    }
+  ]
+}
