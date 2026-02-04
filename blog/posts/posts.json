@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "filename": "raspberry-pi-5-home-server.md",
+      "filename": "k3s-yocto-linux-ivi-experiment.md",
       "title": "From Microservices to Metal: My First Journey into Yocto and k3s Integration",
       "date": "2026-02-04",
       "description": "A senior microservices engineer's first-time journey into custom Linux distribution building, documenting the challenges of integrating k3s into a Yocto-based IVI system - from learning BitBake and cgroups v2 requirements to navigating licensing roadblocks and achieving a working containerized proof of concept.",
