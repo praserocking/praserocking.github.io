@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari 2019 Fuel Flow Analysis - The Engineering Marvel</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-date-fns/2.0.0/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ferrari 2019 Fuel Flow Analysis</h1>
+            <p class="subtitle">The Engineering Marvel: Exploiting Measurement Frequency</p>
+        </header>
+
+        <div class="explanation-section">
+            <div class="info-card">
+                <h3>The Regulation</h3>
+                <p>FIA regulation: Maximum fuel flow rate of <strong>100 kg/hr</strong></p>
+                <p>Fuel flow sensor frequency: <strong>2200 Hz</strong> (2200 measurements/second)</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>The Alleged Method</h3>
+                <p>Ferrari allegedly exploited the measurement intervals by:</p>
+                <ul>
+                    <li>Staying within 100kg/hr during sensor measurements</li>
+                    <li>Increasing fuel flow between measurements</li>
+                    <li>Using wave summation theory to optimize timing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="simulation-container">
+            <div class="controls">
+                <button id="startSimulation">Start Simulation</button>
+                <button id="stopSimulation">Stop Simulation</button>
+                <button id="resetSimulation">Reset</button>
+                <div class="control-group">
+                    <label for="speedSlider">Simulation Speed:</label>
+                    <input type="range" id="speedSlider" min="0.1" max="3" step="0.1" value="1">
+                    <span id="speedValue">1x</span>
+                </div>
+            </div>
+
+            <div class="visualization-grid">
+                <div class="chart-container">
+                    <h3>Fuel Flow Meter Readings (2200 Hz)</h3>
+                    <canvas id="meterChart"></canvas>
+                    <div class="chart-info">
+                        <span class="legal-indicator">✓ Legal readings: Within 100kg/hr</span>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Actual Fuel Flow (Alleged)</h3>
+                    <canvas id="actualChart"></canvas>
+                    <div class="chart-info">
+                        <span class="illegal-indicator">⚠ Actual flow: Exceeds limit between measurements</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="additional-charts">
+                <div class="chart-container">
+                    <h3>Sensor Measurement Timing (2200 Hz)</h3>
+                    <canvas id="timingChart"></canvas>
+                    <div class="chart-info">
+                        <span class="timing-indicator">📊 Shows when sensor takes measurements vs actual fuel injection</span>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Fuel Flow Difference Analysis</h3>
+                    <canvas id="differenceChart"></canvas>
+                    <div class="chart-info">
+                        <span class="difference-indicator">⚡ Difference between actual flow and sensor readings</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <label>Current Fuel Flow:</label>
+                    <span id="currentFlow">0 kg/hr</span>
+                </div>
+                <div class="stat-card">
+                    <label>Sensor Reading:</label>
+                    <span id="sensorReading">0 kg/hr</span>
+                </div>
+                <div class="stat-card">
+                    <label>Average Flow:</label>
+                    <span id="averageFlow">0 kg/hr</span>
+                </div>
+                <div class="stat-card">
+                    <label>Excess Fuel:</label>
+                    <span id="excessFuel">0 kg/hr</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="calculations-section">
+            <h3>Mathematical Analysis & Calculations</h3>
+            <div class="calc-grid">
+                <div class="calc-card">
+                    <h4>Sensor Timing Calculations</h4>
+                    <div class="formula">
+                        <p><strong>Sensor Frequency:</strong> 2200 Hz</p>
+                        <p><strong>Measurement Interval:</strong> 1/2200 = 0.454 ms</p>
+                        <p><strong>Measurement Window:</strong> ~10% of interval = 0.045 ms</p>
+                        <p><strong>Exploitation Window:</strong> 90% of interval = 0.409 ms</p>
+                    </div>
+                </div>
+                
+                <div class="calc-card">
+                    <h4>Fuel Flow Optimization</h4>
+                    <div class="formula">
+                        <p><strong>Legal Limit:</strong> 100 kg/hr</p>
+                        <p><strong>During Measurement:</strong> 95 kg/hr (safe margin)</p>
+                        <p><strong>Between Measurements:</strong> 130 kg/hr (30% increase)</p>
+                        <p><strong>Effective Average:</strong> 95×0.1 + 130×0.9 = <span class="highlight">126.5 kg/hr</span></p>
+                    </div>
+                </div>
+                
+                <div class="calc-card">
+                    <h4>Performance Advantage</h4>
+                    <div class="formula">
+                        <p><strong>Extra Fuel per Hour:</strong> 126.5 - 100 = 26.5 kg/hr</p>
+                        <p><strong>Race Duration:</strong> ~1.5 hours</p>
+                        <p><strong>Total Extra Fuel:</strong> 26.5 × 1.5 = <span class="highlight">39.75 kg</span></p>
+                        <p><strong>Power Increase:</strong> ~15-20% during exploitation windows</p>
+                    </div>
+                </div>
+                
+                <div class="calc-card">
+                    <h4>Timing Precision Required</h4>
+                    <div class="formula">
+                        <p><strong>Injection Timing Accuracy:</strong> ±0.01 ms</p>
+                        <p><strong>Fuel Pressure Control:</strong> ±0.1 bar precision</p>
+                        <p><strong>ECU Response Time:</strong> &lt;0.02 ms</p>
+                        <p><strong>Synchronization Error:</strong> &lt;0.005 ms tolerance</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wave-analysis">
+                <h4>Wave Summation Theory Implementation</h4>
+                <div class="wave-explanation">
+                    <div class="wave-text">
+                        <p><strong>Concept:</strong> Create a fuel injection pattern that appears legal when sampled at 2200 Hz but delivers more fuel overall.</p>
+                        <p><strong>Method:</strong> Use high-frequency fuel pulses synchronized to avoid sensor measurement windows.</p>
+                        <p><strong>Formula:</strong> f(t) = Base_Flow + Pulse_Amplitude × sin(ω×t + φ)</p>
+                        <p>Where: ω = 2π × (sensor_frequency + offset), φ = phase_shift</p>
+                    </div>
+                    <div class="wave-math">
+                        <h5>Key Parameters:</h5>
+                        <ul>
+                            <li>Base Flow: 95 kg/hr (always legal)</li>
+                            <li>Pulse Amplitude: 35 kg/hr (peak increase)</li>
+                            <li>Frequency Offset: Carefully tuned to avoid detection</li>
+                            <li>Phase Shift: Synchronized with sensor timing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="technical-explanation">
+            <h3>Engineering Implementation</h3>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>Fuel System Modifications</h4>
+                    <p>High-speed fuel injectors capable of microsecond-level timing control, advanced ECU programming for precise synchronization, and pressure regulation systems for rapid flow changes.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Sensor Evasion Strategy</h4>
+                    <p>Real-time monitoring of sensor measurement cycles, predictive algorithms for timing fuel pulses, and fail-safe mechanisms to revert to legal flow if synchronization is lost.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Risk Management</h4>
+                    <p>Conservative safety margins during measurements, gradual implementation to avoid detection, and plausible deniability through complex system interactions.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><em>Note: This is an educational simulation based on allegations and technical analysis. The actual methods used by Ferrari in 2019 were never officially disclosed.</em></p>
+        </footer>
+    </div>
+
+    <script src="simulation.js"></script>
+</body>
+</html>
