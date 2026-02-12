@@ -83,6 +83,198 @@ header h1 {
     font-weight: bold;
 }
 
+.key-insight {
+    background: rgba(220, 20, 60, 0.2);
+    border: 1px solid rgba(220, 20, 60, 0.4);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 0.9em;
+    border-left: 4px solid #dc143c;
+}
+
+.legal-phase {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.exploit-phase {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.timing-phase {
+    color: #2196f3;
+    font-weight: bold;
+}
+
+.exploit-summary {
+    background: rgba(255, 152, 0, 0.2);
+    border: 1px solid rgba(255, 152, 0, 0.4);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1.1em;
+    border-left: 4px solid #ff9800;
+}
+
+.how-it-works-section {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.how-it-works-section h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #dc143c;
+    font-size: 2em;
+}
+
+.crack-explanation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.timeline-visual {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
+}
+
+.sensor-active {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.sensor-blind {
+    background: rgba(255, 152, 0, 0.1);
+    border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.sensor-dot {
+    background: #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.exploit-dot {
+    background: #ff9800;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+    animation: pulse-orange 2s infinite;
+}
+
+@keyframes pulse-orange {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 152, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+    }
+}
+
+.timeline-content strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.timeline-content p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+.crack-math {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.crack-math h4 {
+    color: #dc143c;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.math-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.math-step {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid #666;
+    transition: all 0.3s ease;
+}
+
+.math-step:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.final-step {
+    border-left-color: #dc143c !important;
+    background: rgba(220, 20, 60, 0.1) !important;
+}
+
+.step-number {
+    background: #dc143c;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.step-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
 .simulation-container {
     background: rgba(255, 255, 255, 0.05);
     padding: 30px;
@@ -495,6 +687,46 @@ footer p {
         grid-template-columns: 1fr;
         gap: 20px;
     }
+    
+    .crack-explanation {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .how-it-works-section {
+        padding: 20px;
+    }
+    
+    .how-it-works-section h3 {
+        font-size: 1.5em;
+    }
+    
+    .timeline-item {
+        padding: 12px;
+    }
+    
+    .timeline-visual {
+        padding: 20px;
+    }
+    
+    .crack-math {
+        padding: 20px;
+    }
+    
+    .math-step {
+        padding: 10px;
+    }
+    
+    .step-number {
+        width: 22px;
+        height: 22px;
+        font-size: 0.8em;
+        margin-right: 12px;
+    }
+    
+    .step-text {
+        font-size: 0.85em;
+    }
 }
 
 @media (max-width: 480px) {
@@ -563,4 +795,95 @@ footer p {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+/* Status Message Styles */
+.status-message {
+    grid-column: 1 / -1;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.status-message.sensor-watching {
+    background: rgba(33, 150, 243, 0.2);
+    border-color: rgba(33, 150, 243, 0.4);
+    color: #2196f3;
+}
+
+.status-message.exploiting {
+    background: rgba(255, 152, 0, 0.2);
+    border-color: rgba(255, 152, 0, 0.4);
+    color: #ff9800;
+    animation: pulse-status 1.5s infinite;
+}
+
+.status-message.normal {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+@keyframes pulse-status {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(255, 152, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+    }
+}
+
+.status-active,
+.status-exploit,
+.status-normal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.status-icon {
+    font-size: 1.2em;
+}
+
+.status-text {
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
+}
+
+/* Enhanced responsive design for status messages */
+@media (max-width: 768px) {
+    .status-message {
+        padding: 12px;
+        margin-top: 10px;
+    }
+    
+    .status-text {
+        font-size: 0.85em;
+    }
+    
+    .status-icon {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-active,
+    .status-exploit,
+    .status-normal {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .status-text {
+        font-size: 0.8em;
+        text-align: center;
+    }
 }

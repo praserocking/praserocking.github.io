@@ -17,19 +17,64 @@
 
         <div class="explanation-section">
             <div class="info-card">
-                <h3>The Regulation</h3>
+                <h3>🏁 The Regulation</h3>
                 <p>FIA regulation: Maximum fuel flow rate of <strong>100 kg/hr</strong></p>
                 <p>Fuel flow sensor frequency: <strong>2200 Hz</strong> (2200 measurements/second)</p>
+                <div class="key-insight">
+                    <strong>Key Insight:</strong> Sensor only "looks" for 0.045ms every 0.454ms - that's only 10% of the time!
+                </div>
             </div>
             
             <div class="info-card">
-                <h3>The Alleged Method</h3>
+                <h3>🔧 The Alleged Method</h3>
                 <p>Ferrari allegedly exploited the measurement intervals by:</p>
                 <ul>
-                    <li>Staying within 100kg/hr during sensor measurements</li>
-                    <li>Increasing fuel flow between measurements</li>
-                    <li>Using wave summation theory to optimize timing</li>
+                    <li><span class="legal-phase">✅ Legal Phase:</span> Stay at ~95 kg/hr when sensor is measuring</li>
+                    <li><span class="exploit-phase">⚡ Exploit Phase:</span> Boost to ~130 kg/hr when sensor is "blind"</li>
+                    <li><span class="timing-phase">⏱️ Perfect Timing:</span> Microsecond precision to avoid detection</li>
                 </ul>
+                <div class="exploit-summary">
+                    <strong>Result:</strong> Sensor sees legal flow, but engine gets 26% more fuel!
+                </div>
+            </div>
+        </div>
+
+        <div class="how-it-works-section">
+            <h3>🔍 How It Falls Through The Cracks</h3>
+            <div class="crack-explanation">
+                <div class="timeline-visual">
+                    <div class="timeline-item sensor-active">
+                        <div class="timeline-dot sensor-dot"></div>
+                        <div class="timeline-content">
+                            <strong>Sensor Active (10%)</strong>
+                            <p>Fuel flow: 95 kg/hr ✅ LEGAL</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item sensor-blind">
+                        <div class="timeline-dot exploit-dot"></div>
+                        <div class="timeline-content">
+                            <strong>Sensor Blind (90%)</strong>
+                            <p>Fuel flow: 130 kg/hr ⚡ UNDETECTED</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="crack-math">
+                    <h4>The Math Behind The Crack:</h4>
+                    <div class="math-breakdown">
+                        <div class="math-step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Sensor measures: 95 kg/hr × 10% = 9.5 kg/hr contribution</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Hidden flow: 130 kg/hr × 90% = 117 kg/hr contribution</span>
+                        </div>
+                        <div class="math-step final-step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Actual average: 9.5 + 117 = <strong>126.5 kg/hr</strong></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

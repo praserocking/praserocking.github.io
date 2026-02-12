@@ -378,20 +378,79 @@ class FuelFlowSimulation {
             document.getElementById('averageFlow').textContent = `${average.toFixed(1)} kg/hr`;
         }
         
-        // Add visual indicators
+        // Add visual indicators with enhanced feedback
         const currentFlowElement = document.getElementById('currentFlow');
         const sensorElement = document.getElementById('sensorReading');
+        const excessElement = document.getElementById('excessFuel');
         
+        // Current flow color coding
         if (actualFlow > this.LEGAL_LIMIT) {
             currentFlowElement.style.color = '#ff5722';
+            currentFlowElement.style.fontWeight = 'bold';
+            currentFlowElement.style.textShadow = '0 0 5px rgba(255, 87, 34, 0.5)';
         } else {
             currentFlowElement.style.color = '#4caf50';
+            currentFlowElement.style.fontWeight = 'normal';
+            currentFlowElement.style.textShadow = 'none';
         }
         
-        if (sensorReading > this.LEGAL_LIMIT) {
-            sensorElement.style.color = '#ff5722';
+        // Sensor reading - should always be legal in this simulation
+        sensorElement.style.color = '#4caf50';
+        sensorElement.style.fontWeight = 'normal';
+        
+        // Excess fuel highlighting
+        if (difference > 5) {
+            excessElement.style.color = '#ff9800';
+            excessElement.style.fontWeight = 'bold';
+            excessElement.style.textShadow = '0 0 5px rgba(255, 152, 0, 0.5)';
         } else {
-            sensorElement.style.color = '#4caf50';
+            excessElement.style.color = '#dc143c';
+            excessElement.style.fontWeight = 'normal';
+            excessElement.style.textShadow = 'none';
+        }
+        
+        // Add dynamic status messages
+        this.updateStatusMessage(actualFlow, sensorReading, difference);
+    }
+    
+    updateStatusMessage(actualFlow, sensorReading, difference) {
+        // Create or update status message element
+        let statusElement = document.getElementById('simulationStatus');
+        if (!statusElement) {
+            statusElement = document.createElement('div');
+            statusElement.id = 'simulationStatus';
+            statusElement.className = 'status-message';
+            document.querySelector('.stats-container').appendChild(statusElement);
+        }
+        
+        const sensorPeriod = this.MEASUREMENT_INTERVAL;
+        const timeInPeriod = (this.time % sensorPeriod) / sensorPeriod;
+        const isSensorActive = timeInPeriod < 0.1;
+        
+        if (isSensorActive) {
+            statusElement.innerHTML = `
+                <div class="status-active">
+                    <span class="status-icon">👁️</span>
+                    <span class="status-text">SENSOR ACTIVE - Flow appears legal at ${sensorReading.toFixed(1)} kg/hr</span>
+                </div>
+            `;
+            statusElement.className = 'status-message sensor-watching';
+        } else if (difference > 10) {
+            statusElement.innerHTML = `
+                <div class="status-exploit">
+                    <span class="status-icon">⚡</span>
+                    <span class="status-text">EXPLOIT ACTIVE - Hidden ${difference.toFixed(1)} kg/hr excess flow!</span>
+                </div>
+            `;
+            statusElement.className = 'status-message exploiting';
+        } else {
+            statusElement.innerHTML = `
+                <div class="status-normal">
+                    <span class="status-icon">📊</span>
+                    <span class="status-text">Normal operation - Transitioning between phases</span>
+                </div>
+            `;
+            statusElement.className = 'status-message normal';
         }
     }
     
